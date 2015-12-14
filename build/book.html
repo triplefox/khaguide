@@ -1,69 +1,48 @@
-<section id="khas-first-game-jam">
-  <title>Kha's First Game Jam</title>
-  <para>
-    This guide is intended to give you a &quot;real-world&quot;
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Kha's First Game Jam</title><meta name="generator" content="DocBook XSL Stylesheets V1.79.0"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="khas-first-game-jam"></a>Kha's First Game Jam</h2></div></div><hr></div><p>
+    This guide is intended to give you a "real-world"
     introduction to problems and techniques found in game programming,
     as well as the Kha APIs and how to use them in games. A simple but
     finished 2D game is presented with its full source code at each
     stage of development, from the early drawing routines to the final
     polish.
-  </para>
-  <para>
+  </p><p>
     Its intended audience is existing programmers who don't necessarily
     know game programming or the Haxe language, and experienced game
     programmers who would like to see a whole project workflow in
     action.
-  </para>
-<literallayout>[[What is Haxe? What is Kha?]][[Project Setup]]
-[[API 1: Main Class]][[Testing and Publishing the Project]]
-[[API 2: Graphics Classes]][[API 3: Keyboard Input]]
-[[API 4: Graphics2, Timing and Moving Rectangles]][[Bombs Away!]]
-[[Drawing a Canyon]][[Bomb-Canyon Collision]]
-[[Rock Fall Behavior]][[API 5: Text and khafile.js]]
-[[Completing the game loop]][[API 6: Sprite Assets]]
-[[API 7: Sound Effects]][[Last Thoughts]]
-[[Troubleshooting]][[Contributing to the Kha Guide]]</literallayout>
-<section id="what-is-haxe">
-  <title>What is Haxe?</title>
-  <para>
+  </p><div class="literallayout"><p>[[What is Haxe? What is Kha?]][[Project Setup]]<br>
+[[API 1: Main Class]][[Testing and Publishing the Project]]<br>
+[[API 2: Graphics Classes]][[API 3: Keyboard Input]]<br>
+[[API 4: Graphics2, Timing and Moving Rectangles]][[Bombs Away!]]<br>
+[[Drawing a Canyon]][[Bomb-Canyon Collision]]<br>
+[[Rock Fall Behavior]][[API 5: Text and khafile.js]]<br>
+[[Completing the game loop]][[API 6: Sprite Assets]]<br>
+[[API 7: Sound Effects]][[Last Thoughts]]<br>
+[[Troubleshooting]][[Contributing to the Kha Guide]]</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="what-is-haxe"></a>What is Haxe?</h3></div></div></div><p>
     Haxe is an ECMAScript-like source code language. It compiles to many
     different source and binary targets, including C++, PHP, Flash SWF,
     JS... It eases portability difficulties by providing a single source
     language, with low-level access to the idioms of each target
     platform.
-  </para>
-</section>
-<section id="what-is-kha">
-  <title>What is Kha?</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="what-is-kha"></a>What is Kha?</h3></div></div></div><p>
     Kha is a low-level framework that builds on the Haxe compiler
     technology. Like Haxe itself, it abstracts the details of different
     platforms to ease portability concerns. Kha builds on Haxe to offer
     a framework suitable for real-time multimedia applications,
     particularly games.
-  </para>
-</section>
-<section id="i-dont-understand-what-that-means">
-  <title>I don't understand what that means?</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="i-dont-understand-what-that-means"></a>I don't understand what that means?</h3></div></div></div><p>
     Write code in Haxe. The Kha build process produces an appropriate
     build for the target platform.
-  </para>
-  <para>
+  </p><p>
     Then work with the toolchain of the target platform to debug it.
-  </para>
-</section>
-<section id="what-is-the-benefit">
-  <title>What is the benefit?</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="what-is-the-benefit"></a>What is the benefit?</h3></div></div></div><p>
     Haxe is designed for high compatibility. It is a easy language to
     get started with if you are familiar with popular scripting
     languages like Javascript, Lua, Python, or Ruby. It has many
     features that those languages do not have, and a fast, powerful
     compiler that will catch many errors for you and perform
     optimizations that would be out of reach otherwise.
-  </para>
-  <para>
+  </p><p>
     Haxe is also excellent at allowing you to defer final technology
     choices until later. The same codebase can compile to many different
     targets, and also many different APIs. If you discover, for example,
@@ -71,23 +50,17 @@
     code to a different API - either native APIs or another framework.
     You will not have to rewrite the entire codebase in another
     language.
-  </para>
-  <para>
+  </p><p>
     Lastly, by working in Haxe you will learn techniques for writing
     reliable, highly portable code - not just in Haxe, but in all the
     environments Haxe targets. The Haxe ecosystem is designed around
     making sure all targets have a viable solution. You gain the
     possibility of using the debugging tools of more than one target,
     which improves your chances of quickly resolving a difficult bug.
-  </para>
-  <para>
+  </p><p>
     Many Haxe users claim higher overall productivity with Haxe than in
     other environments.
-  </para>
-</section>
-<section id="what-weaknesses-does-haxe-have">
-  <title>What weaknesses does Haxe have?</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="what-weaknesses-does-haxe-have"></a>What weaknesses does Haxe have?</h3></div></div></div><p>
     Although Haxe is mostly familiar for a former Actionscript or
     Javascript programmer, some aspects may be new and challenging. The
     compiler's type inference engine will catch many of your minor
@@ -96,19 +69,17 @@
     typing that are used in, for example, Ruby, are poor style in Haxe
     because they do not leverage the type system efficiently. There are
     plenty of new static-typed tricks to learn instead :)
-  </para>
-  <para>
+  </p><p>
     You will also encounter more friction within the toolchain because
     it is not exactly designed around the native tools of the target
     environment. Debugging problems buried in the toolchain may require
-    domain knowledge that &quot;bridges the gap&quot; from the framework
+    domain knowledge that "bridges the gap" from the framework
     into the target. Because crossplatform frameworks have multiple
     implementations of their APIs, behaviors may change slightly across
-    targets, leading to &quot;write once debug everywhere&quot;. Good
+    targets, leading to "write once debug everywhere". Good
     frameworks like Kha will also get out of the way and ease the
     process of writing things in a cross-platform way.
-  </para>
-  <para>
+  </p><p>
     Haxe expects a garbage-collected environment, and builds itself on a
     relatively high-level runtime. This limits its utility for the most
     demanding games that need low-level control over memory allocation
@@ -119,218 +90,138 @@
     memory. Simpler scenes and simulations will make garbage collections
     both smaller and less frequent, limiting any potential impact on
     framerates.
-  </para>
-  <section id="why-is-kha-special">
-    <title>Why is Kha special?</title>
-    <programlisting>
+  </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="why-is-kha-special"></a>Why is Kha special?</h4></div></div></div><pre class="programlisting">
 Kha aims for a new standard of crossplatform games technology, with a graphics and sound API that can successfully span many different environments and accommodate major variations in features exposed.
-</programlisting>
-  </section>
-</section>
-<section id="kha-versus-openfl-and-unity3d">
-  <title>Kha versus OpenFL and Unity3D</title>
-  <section id="is-kha-related-to-openfl-or-nme-will-one-give-me-better-performance-will-i-be-locked-in">
-    <title>Is Kha related to OpenFL or NME? Will one give me better
-    performance? Will I be locked in?</title>
-    <para>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="kha-versus-openfl-and-unity3d"></a>Kha versus OpenFL and Unity3D</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="is-kha-related-to-openfl-or-nme-will-one-give-me-better-performance-will-i-be-locked-in"></a>Is Kha related to OpenFL or NME? Will one give me better
+    performance? Will I be locked in?</h4></div></div></div><p>
       OpenFL is another project that uses the Haxe technology to create
       a cross-platform framework. The goals of the projects are
       different:
-    </para>
-    <itemizedlist spacing="compact">
-      <listitem>
-        <para>
+    </p><div class="itemizedlist"><ul class="itemizedlist compact" style="list-style-type: disc; "><li class="listitem"><p>
           OpenFL is best for programmers who wish to continue to work
           with the Flash APIs, and primarily in 2D. It aims to provide a
           Flash-like experience everywhere, but also provides certain
           low-level features that are not native to Flash.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           NME is a variant on OpenFL that has at various times been the
           same project, sharing similar goals. It presently aims to be a
-          purely &quot;native platform&quot; target, supporting more
+          purely "native platform" target, supporting more
           low-level access.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           Kha is a purely low-level cross-platform framework, and
           supports 2D and 3D. It provides fewer and simpler APIs, but
           has strong provisions for graphics rendering, including fonts
           and shaders.
-        </para>
-      </listitem>
-    </itemizedlist>
-    <para>
+        </p></li></ul></div><p>
       The featuresets of each of these frameworks overlap, but all are
       capable of decent to great performance, depending on what you do
       and how you do it. Because they use the same language, you will
       also enjoy a less costly migration if you discover you need to
       switch frameworks.
-    </para>
-  </section>
-  <section id="is-kha-better-than-unity3d">
-    <title>Is Kha better than Unity3D?</title>
-    <para>
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="is-kha-better-than-unity3d"></a>Is Kha better than Unity3D?</h4></div></div></div><p>
       Many core capabilities are already available in Kha, but Unity is
       much more fleshed out and tested as a game engine. The difference
-      is in whether you are aiming to implement &quot;engine bits&quot;
+      is in whether you are aiming to implement "engine bits"
       like collision detection and physics, or if you can use an
       off-the-shelf solution effectively.
-    </para>
-    <para>
+    </p><p>
       If you want to mix Kha and Unity, or Haxe and Unity, that is also
       an option: Kha has a Unity3D export target, and there are several
       bindings to Unity APIs from Haxe, ensuring that your codebase can
       be migrated if necessary.
-    </para>
-  </section>
-</section>
-<section id="project-setup">
-  <title>Project Setup</title>
-  <section id="how-should-i-get-started-with-kha">
-    <title>How should I get started with Kha?</title>
-    <para>
-      There are two ways to work with Kha, the &quot;haxelib&quot; way
-      and the &quot;standalone&quot; way. The haxelib way is familiar to
+    </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="project-setup"></a>Project Setup</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="how-should-i-get-started-with-kha"></a>How should I get started with Kha?</h4></div></div></div><p>
+      There are two ways to work with Kha, the "haxelib" way
+      and the "standalone" way. The haxelib way is familiar to
       existing Haxe users. The standalone way allows a project's whole
       environment to be maintained without accidentially losing
       important dependencies, and so it is less dependent on the
-      &quot;Haxe ecosystem&quot;.
-    </para>
-    <para>
+      "Haxe ecosystem".
+    </p><p>
       In both cases, your workflow after installation is:
-    </para>
-    <orderedlist spacing="compact">
-      <listitem>
-        <para>
+    </p><div class="orderedlist"><ol class="orderedlist compact" type="1"><li class="listitem"><p>
           Run khamake to compile the assets and project metadata for a
           target platform(html5, windows, etc.)
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           Test and debug using additional compilers and IDEs appropriate
           to your target(e.g. Visual Studio, Unity editor, browser).
-        </para>
-      </listitem>
-    </orderedlist>
-    <para>
+        </p></li></ol></div><p>
       Robert says:
-    </para>
-    <blockquote>
-      <para>
-        <emphasis>The haxelib version is for beginners, standalone is
+    </p><div class="blockquote"><blockquote class="blockquote"><p>
+        <span class="emphasis"><em>The haxelib version is for beginners, standalone is
         for pros. Using haxelib is easier (when you already use Haxe)
         and haxelib Kha isn't copied to the actual projects, so it takes
         up less space. Standalone is highly recommended when starting an
         actual project because you can then version Kha with your
-        project.</emphasis>
-      </para>
-      <para>
-        <emphasis>The only actual differences are that haxelib Kha
+        project.</em></span>
+      </p><p>
+        <span class="emphasis"><em>The only actual differences are that haxelib Kha
         includes a copy of node.js. Standalone Kha doesn't but includes
         a slightly modified version of Haxe (usual Haxe calls haxelib
         when Java or C# targets are used to download some stuff, in
-        Kha's Haxe that's already included).</emphasis>
-      </para>
-      <para>
-        <emphasis>This arrangement is a little more complex but allows
+        Kha's Haxe that's already included).</em></span>
+      </p><p>
+        <span class="emphasis"><em>This arrangement is a little more complex but allows
         you to maintain all of the project code as a cohesive
-        whole.</emphasis>
-      </para>
-    </blockquote>
-    <section id="haxelib">
-      <title>Haxelib</title>
-      <para>
-        Install a copy of <ulink url="http://www.haxe.org">Haxe</ulink>
+        whole.</em></span>
+      </p></blockquote></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="haxelib"></a>Haxelib</h5></div></div></div><p>
+        Install a copy of <a class="ulink" href="http://www.haxe.org" target="_top">Haxe</a>
         and run
-      </para>
-      <programlisting>
+      </p><pre class="programlisting">
 haxelib install kha
-</programlisting>
-      <para>
+</pre><p>
         at the command line, after Haxe is setup.
-      </para>
-      <para>
-        An &quot;Empty&quot; project exists in the haxelib package. Copy
+      </p><p>
+        An "Empty" project exists in the haxelib package. Copy
         this to make your project, or download and unzip the
-        <ulink url="https://github.com/KTXSoftware/Empty/archive/master.zip">github
-        archived copy</ulink>. Then cd to &quot;Empty&quot;.
-      </para>
-      <para>
-        <emphasis role="strong">To run khamake type:</emphasis>
-      </para>
-      <programlisting>
+        <a class="ulink" href="https://github.com/KTXSoftware/Empty/archive/master.zip" target="_top">github
+        archived copy</a>. Then cd to "Empty".
+      </p><p>
+        <span class="strong"><strong>To run khamake type:</strong></span>
+      </p><pre class="programlisting">
 haxelib run kha
-</programlisting>
-      <para>
+</pre><p>
         The remainder of this guide will alias this line as
-        &quot;khamake&quot;. You can add targets and options to it.
-      </para>
-    </section>
-    <section id="standalone">
-      <title>Standalone</title>
-      <para>
+        "khamake". You can add targets and options to it.
+      </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="standalone"></a>Standalone</h5></div></div></div><p>
         Standalone installation requires
-        <ulink url="https://git-scm.com/">git</ulink> and
-        <ulink url="https://nodejs.org/">node</ulink>. Use this git
+        <a class="ulink" href="https://git-scm.com/" target="_top">git</a> and
+        <a class="ulink" href="https://nodejs.org/" target="_top">node</a>. Use this git
         line:
-      </para>
-      <programlisting>
+      </p><pre class="programlisting">
 git clone --recursive https://github.com/KTXSoftware/Empty.git
-</programlisting>
-      <para>
+</pre><p>
         This will download lots of stuff, since it's including all of
-        Kha. When it's done, cd into &quot;Empty&quot;.
-      </para>
-      <para>
-        <emphasis role="strong">To run khamake type:</emphasis>
-      </para>
-      <programlisting>
+        Kha. When it's done, cd into "Empty".
+      </p><p>
+        <span class="strong"><strong>To run khamake type:</strong></span>
+      </p><pre class="programlisting">
 node Kha/make
-</programlisting>
-      <para>
+</pre><p>
         The remainder of this guide will alias this line as
-        &quot;khamake&quot;. You can add targets and options to it.
-      </para>
-      <para>
+        "khamake". You can add targets and options to it.
+      </p><p>
         Alternate method, using a script that runs khamake:
-      </para>
-      <para>
-        <emphasis role="strong">From Windows cmd type:</emphasis>
-      </para>
-      <programlisting>
+      </p><p>
+        <span class="strong"><strong>From Windows cmd type:</strong></span>
+      </p><pre class="programlisting">
 cd build
 build
-</programlisting>
-      <para>
-        <emphasis role="strong">From bash type:</emphasis>
-      </para>
-      <programlisting>
+</pre><p>
+        <span class="strong"><strong>From bash type:</strong></span>
+      </p><pre class="programlisting">
 cd build
 ./build
-</programlisting>
-      <para>
+</pre><p>
         This script brings up a prompt for target and options like this,
         and then runs khamake:
-      </para>
-      <programlisting>
+      </p><pre class="programlisting">
 ___________________________________
 khamake builder
 type q to quit.
 ___________________________________
 Specify target:html5
 Specify options:
-</programlisting>
-    </section>
-  </section>
-</section>
-<section id="build-options">
-  <title>Build Options</title>
-  <programlisting>
+</pre></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="build-options"></a>Build Options</h3></div></div></div><pre class="programlisting">
 khamake
     -&gt; visual studio solution (uncompiled)
         
@@ -348,163 +239,98 @@ khamake html5
 
 For more commands:
     khamake --help
-</programlisting>
-  <para>
+</pre><p>
     The resulting project or binary will live somewhere in the
-    &quot;/build&quot; directory and when run should give you a blank
+    "/build" directory and when run should give you a blank
     screen. For more on builds:
-  </para>
-  <para>
+  </p><p>
     [[Testing and Publishing the Project]]
-  </para>
-</section>
-<section id="converting-a-haxelib-project-to-a-standalone-project">
-  <title>Converting a haxelib project to a standalone project</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="converting-a-haxelib-project-to-a-standalone-project"></a>Converting a haxelib project to a standalone project</h3></div></div></div><p>
     If you have a project using Kha in haxelib form, without git, and
     want to convert, the simplest way is to clone the Empty project and
     copy your project files in on top.
-  </para>
-  <para>
+  </p><p>
     If you have an existing git repository, you can add Kha as a
     submodule like this:
-  </para>
-  <programlisting>
+  </p><pre class="programlisting">
 git submodule add https://github.com/KTXSoftware/Kha
 git submodule update --init --recursive
-git commit -m &quot;add Kha&quot; 
-</programlisting>
-</section>
-<section id="updating-kha-haxelib">
-  <title>Updating Kha (haxelib)</title>
-  <programlisting>
+git commit -m "add Kha" 
+</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="updating-kha-haxelib"></a>Updating Kha (haxelib)</h3></div></div></div><pre class="programlisting">
 haxelib upgrade
-</programlisting>
-</section>
-<section id="updating-kha-standalone">
-  <title>Updating Kha (standalone)</title>
-  <programlisting>
+</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="updating-kha-standalone"></a>Updating Kha (standalone)</h3></div></div></div><pre class="programlisting">
 git submodule foreach --recursive git pull origin master
-git commit -m &quot;update Kha&quot;
-</programlisting>
-</section>
-<section id="dependencies-with-standalone-projects">
-  <title>Dependencies with standalone projects</title>
-  <para>
+git commit -m "update Kha"
+</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="dependencies-with-standalone-projects"></a>Dependencies with standalone projects</h3></div></div></div><p>
     In a standalone project we recommend making a copy of dependencies
     within the project. If you want to update from Haxelib, do so
     manually.
-  </para>
-</section>
-<section id="flashdevelop">
-  <title>FlashDevelop</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="flashdevelop"></a>FlashDevelop</h3></div></div></div><p>
     FlashDevelop (or FD for short) is one of the most popular IDEs for
     Haxe on the Windows platform. Originally made for Flash and
     Actionscript projects, it was extended to support Haxe many years
     ago. Kha can generate FD project files.
-  </para>
-  <orderedlist>
-    <listitem>
-      <para>
+  </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
         To work with Kha and FD, visit the /build directory to notice a
         project file for your build target. Open this to get full IDE
         integration.
-      </para>
-    </listitem>
-    <listitem>
-      <para>
-        F5 is your &quot;test build&quot; button. It will run Haxe and
+      </p></li><li class="listitem"><p>
+        F5 is your "test build" button. It will run Haxe and
         emit new code. If you want new targets or a complete build
         including assets, run khamake again.
-      </para>
-    </listitem>
-  </orderedlist>
-</section>
-<section id="intellij">
-  <title>IntelliJ</title>
-  <para>
+      </p></li></ol></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="intellij"></a>IntelliJ</h3></div></div></div><p>
     IntelliJ contains a well-maintained Haxe plugin, available from its
     internal plugin browser, and Kha generates project files for it.
     Make sure the plugin is installed. Then visit the /build directory
     and open the project file for your build target.
-  </para>
-  <orderedlist>
-    <listitem>
-      <para>
+  </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
         IntelliJ will complain about the Git repository settings, but
         you can safely ignore this or replace the settings with your own
         if you wish to fix the Git integration.
-      </para>
-    </listitem>
-    <listitem>
-      <para>
+      </p></li><li class="listitem"><p>
         You must also set up the project's SDK. IntelliJ will pop up the
-        &quot;Project Structure&quot; dialog and prompt you to add a
+        "Project Structure" dialog and prompt you to add a
         correct SDK when you first try to build the project. You can add
-        it by clicking the &quot;New&quot; button adjacent to
-        &quot;Module SDK&quot;. This will point to the appropriate Haxe
+        it by clicking the "New" button adjacent to
+        "Module SDK". This will point to the appropriate Haxe
         compiler and will depend on whether you are in a Haxelib or
         standalone project:
-      </para>
-    </listitem>
-  </orderedlist>
-  <itemizedlist spacing="compact">
-    <listitem>
-      <para>
+      </p></li></ol></div><div class="itemizedlist"><ul class="itemizedlist compact" style="list-style-type: disc; "><li class="listitem"><p>
         For Haxelib, use your preferred installation of Haxe.
-      </para>
-    </listitem>
-    <listitem>
-      <para>
-        For standalone, use &quot;&lt;project&gt;/Tools/haxe&quot;.
-      </para>
-    </listitem>
-  </itemizedlist>
-  <orderedlist>
-    <listitem>
-      <para>
-        Finally, in the &quot;Project Structure&quot; dialog, under the
-        &quot;Haxe&quot; tab, make sure that the &quot;Skip
-        compilation&quot; checkbox is unchecked.
-      </para>
-    </listitem>
-    <listitem>
-      <para>
-        Ctrl+F9 is your &quot;test build&quot; button. It will run Haxe
+      </p></li><li class="listitem"><p>
+        For standalone, use "&lt;project&gt;/Tools/haxe".
+      </p></li></ul></div><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+        Finally, in the "Project Structure" dialog, under the
+        "Haxe" tab, make sure that the "Skip
+        compilation" checkbox is unchecked.
+      </p></li><li class="listitem"><p>
+        Ctrl+F9 is your "test build" button. It will run Haxe
         and emit new code. If you want new targets or a complete build
         including assets, run khamake again.
-      </para>
-    </listitem>
-  </orderedlist>
-</section>
-<section id="getting-around-in-haxe">
-  <title>Getting around in Haxe</title>
-  <para>
+      </p></li></ol></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="getting-around-in-haxe"></a>Getting around in Haxe</h3></div></div></div><p>
     Here is a quick example to familiarize yourself:
-  </para>
-  <programlisting language="haxe">
+  </p><pre class="programlisting">
 package; // Package namespaces are organized by directory structure, supplemented with compiler options
 import Std;
 import Type;
 
 class Test { // code must be contained inside classes
 
-    public static function main() { // typical boilerplate for a &quot;global&quot; function
+    public static function main() { // typical boilerplate for a "global" function
 
-        trace(&quot;hello world&quot;); // debug print
+        trace("hello world"); // debug print
         
         var i = 100; // assign Int
         var f = 3.14; // assign Float
-        var s = &quot;50&quot;; // assign String
+        var s = "50"; // assign String
         
         var si = Std.parseInt(s); // Std contains everyday type conversions
         
         if (i + si == 150) { // ECMA-style optional-brace syntax
-           // print &quot;100 + 50 = 150&quot; two ways:
+           // print "100 + 50 = 150" two ways:
            
            // with concatenation
-           trace(Std.string(i) + &quot; + &quot; + s + &quot; = 150&quot;);
+           trace(Std.string(i) + " + " + s + " = 150");
            // with string interpolation
            trace('$i + $s = ${i+si}');
         }
@@ -529,7 +355,7 @@ class Test { // code must be contained inside classes
             while(c &lt; iar.length) c+=1;
         }
         
-        if (iar3 == null) { // null checks aren't &quot;falsy&quot;
+        if (iar3 == null) { // null checks aren't "falsy"
             iar3 = iar.concat(iar2); // concat makes a copy
             trace(iar3.length == 6);
         }
@@ -537,7 +363,7 @@ class Test { // code must be contained inside classes
         // instantiate a class and call some methods
         var q = new Inserter();
         q.insert(0);
-        q.insert(&quot;hello world&quot;);
+        q.insert("hello world");
         q.insert(iar);
         trace(q.numberOfInts()==1);
 
@@ -572,24 +398,16 @@ class Inserter {
     }
 
 }
-</programlisting>
-  <para>
-    Also visit <ulink url="http://try.haxe.org/">Try Haxe</ulink> for
+</pre><p>
+    Also visit <a class="ulink" href="http://try.haxe.org/" target="_top">Try Haxe</a> for
     some more basic examples.
-  </para>
-</section>
-<section id="kha-api-1-main-class-system">
-  <title>Kha API 1: Main class, System</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="kha-api-1-main-class-system"></a>Kha API 1: Main class, System</h3></div></div></div><p>
     The Empty project already has Kha configure some things about the
     display and update timing, so let's review. For laziness and
-    simplicity reasons, we're going to stick with the &quot;Empty&quot;
+    simplicity reasons, we're going to stick with the "Empty"
     naming convention throughout this guide, although you may want to
     pick a cuter name for your project's title and main class.
-  </para>
-  <section id="main.hx">
-    <title>Main.hx</title>
-    <programlisting language="haxe">
+  </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="main.hx"></a>Main.hx</h4></div></div></div><pre class="programlisting">
 package;
 
 import kha.Scheduler;
@@ -597,7 +415,7 @@ import kha.System;
 
 class Main {
     public static function main() {
-        System.init(&quot;Empty&quot;, 640, 480, initialized);
+        System.init("Empty", 640, 480, initialized);
     }
     
     private static function initialized(): Void {
@@ -606,11 +424,7 @@ class Main {
         Scheduler.addTimeTask(game.update, 0, 1 / 60);
     }
 }
-</programlisting>
-  </section>
-  <section id="empty.hx">
-    <title>Empty.hx</title>
-    <programlisting language="haxe">
+</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="empty.hx"></a>Empty.hx</h4></div></div></div><pre class="programlisting">
 package;
 import kha.Framebuffer;
 
@@ -627,199 +441,100 @@ class Empty {
             
     }
 }
-</programlisting>
-    <para>
+</pre><p>
       Running this should still give you a blank screen. We have three
       Kha classes to look at:
-    </para>
-  </section>
-  <section id="system">
-    <title>System</title>
-    <para>
-      This class is the &quot;global state&quot; of your Kha app: It
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="system"></a>System</h4></div></div></div><p>
+      This class is the "global state" of your Kha app: It
       holds the render callback, it says how big the screen is and how
       fast it refreshes, etc. We use it here to initialize the screen,
       and then to set up the rendering callback. System also contains:
-    </para>
-    <itemizedlist spacing="compact">
-      <listitem>
-        <para>
+    </p><div class="itemizedlist"><ul class="itemizedlist compact" style="list-style-type: disc; "><li class="listitem"><p>
           callbacks for various OS/windowing-level events, like being
           minimized or shutdown
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          a global &quot;time&quot; value (since startup, measured in
+        </p></li><li class="listitem"><p>
+          a global "time" value (since startup, measured in
           seconds)
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           vsync control
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          systemID - what target you are on, e.g. &quot;HTML5&quot;.
-        </para>
-      </listitem>
-    </itemizedlist>
-  </section>
-  <section id="scheduler">
-    <title>Scheduler</title>
-    <para>
+        </p></li><li class="listitem"><p>
+          systemID - what target you are on, e.g. "HTML5".
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="scheduler"></a>Scheduler</h4></div></div></div><p>
       This class governs all the interesting timing information in Kha.
       We'll discuss it in depth later. For now, just know that it lets
       you set up recurring tasks like updates to your gameplay,
       independently of the render callback. Although System has a
-      &quot;time&quot;, Scheduler has a &quot;framerate-corrected&quot;
+      "time", Scheduler has a "framerate-corrected"
       time, so consider using it first if the time is used for gameplay.
-    </para>
-  </section>
-  <section id="framebuffer">
-    <title>Framebuffer</title>
-    <para>
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="framebuffer"></a>Framebuffer</h4></div></div></div><p>
       This is a class that represents the display we're drawing to from
       the rendering callback. This will get more attention shortly, as
       our next API chapter is about simple drawing.
-    </para>
-  </section>
-</section>
-<section id="testing-the-project">
-  <title>Testing the Project</title>
-  <para>
+    </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="testing-the-project"></a>Testing the Project</h3></div></div></div><p>
     The preferred targets for Kha development are Flash and HTML5.
     Debugging functionality and test iteration times are best on these
     targets. For these targets you may use either your web browser or
     the standalone Flash Projector.
-  </para>
-  <para>
+  </p><p>
     For a Windows build the most straightforward option is Visual
     Studio. khabuild will try to autodetect the version you are running
     and generate a VS solution file for you. Then open the solution in
     the IDE, select Debug or Release and do debugging and profiling from
     within VS.
-  </para>
-</section>
-<section id="publishing-the-project">
-  <title>Publishing the Project</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="publishing-the-project"></a>Publishing the Project</h3></div></div></div><p>
     You are ready to show your game to somebody, but you need to get it
     running on their device. This section will depend on your target,
     but Kha has kept the process simple.
-  </para>
-  <para>
+  </p><p>
     Robert summarizes:
-  </para>
-  <blockquote>
-    <para>
-      <emphasis>For some targets (Windows, Linux,...) you put the
+  </p><div class="blockquote"><blockquote class="blockquote"><p>
+      <span class="emphasis"><em>For some targets (Windows, Linux,...) you put the
       executable in the windows/linux/... directory, for other targets
       (Android, iOS, OSX,...) the IDE does everything for
-      you.</emphasis>
-    </para>
-  </blockquote>
-  <blockquote>
-    <para>
-      <emphasis>No target has any additional dependencies.</emphasis>
-    </para>
-  </blockquote>
-  <section id="flash">
-    <title>Flash</title>
-    <para>
-      The result is stored in &quot;build/flash&quot; as
-      &quot;kha.swf&quot;. Choose your distribution type:
-    </para>
-    <itemizedlist spacing="compact">
-      <listitem>
-        <para>
-          <emphasis>Multi-file distribution</emphasis>: This is the
+      you.</em></span>
+    </p></blockquote></div><div class="blockquote"><blockquote class="blockquote"><p>
+      <span class="emphasis"><em>No target has any additional dependencies.</em></span>
+    </p></blockquote></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="flash"></a>Flash</h4></div></div></div><p>
+      The result is stored in "build/flash" as
+      "kha.swf". Choose your distribution type:
+    </p><div class="itemizedlist"><ul class="itemizedlist compact" style="list-style-type: disc; "><li class="listitem"><p>
+          <span class="emphasis"><em>Multi-file distribution</em></span>: This is the
           default build mode. The entire folder, including
-          &quot;Assets&quot;, must be uploaded as Kha will load these
+          "Assets", must be uploaded as Kha will load these
           assets at runtime.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          <emphasis>Single-file distribution</emphasis>: Use the option
-          <emphasis>--addallassets</emphasis> in khabuild.
-        </para>
-      </listitem>
-    </itemizedlist>
-    <para>
+        </p></li><li class="listitem"><p>
+          <span class="emphasis"><em>Single-file distribution</em></span>: Use the option
+          <span class="emphasis"><em>--addallassets</em></span> in khabuild.
+        </p></li></ul></div><p>
       After deciding on multi-file or single file:
-    </para>
-    <orderedlist spacing="compact">
-      <listitem>
-        <para>
+    </p><div class="orderedlist"><ol class="orderedlist compact" type="1"><li class="listitem"><p>
           Upload either kha.swf or the whole directory to your hosting.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           You must provide your own web page for Flash embedding.
-        </para>
-      </listitem>
-    </orderedlist>
-  </section>
-  <section id="html5">
-    <title>HTML5</title>
-    <para>
-      The result is stored in &quot;build/html5&quot;.
-    </para>
-    <orderedlist spacing="compact">
-      <listitem>
-        <para>
+        </p></li></ol></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="html5"></a>HTML5</h4></div></div></div><p>
+      The result is stored in "build/html5".
+    </p><div class="orderedlist"><ol class="orderedlist compact" type="1"><li class="listitem"><p>
           Upload the directory to a web host and point your users at the
           appropriate URL.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           The build is complete.
-        </para>
-      </listitem>
-    </orderedlist>
-  </section>
-  <section id="desktop">
-    <title>Desktop</title>
-    <para>
+        </p></li></ol></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="desktop"></a>Desktop</h4></div></div></div><p>
       The result is stored in the appropriate platform target, e.g.
-      &quot;build/windows&quot; for example.
-    </para>
-    <orderedlist spacing="compact">
-      <listitem>
-        <para>
-          Copy the executable from &quot;windows-build/Release&quot; to
-          &quot;build/windows&quot;.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Package &quot;build/windows&quot; as suits you and send the
+      "build/windows" for example.
+    </p><div class="orderedlist"><ol class="orderedlist compact" type="1"><li class="listitem"><p>
+          Copy the executable from "windows-build/Release" to
+          "build/windows".
+        </p></li><li class="listitem"><p>
+          Package "build/windows" as suits you and send the
           result to your users.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           The build is complete.
-        </para>
-      </listitem>
-    </orderedlist>
-  </section>
-</section>
-<section id="kha-api-2-display">
-  <title>Kha API 2: Display</title>
-  <para>
-    Now we will render a very simple &quot;strobe the screen with
-    different colors&quot;. <emphasis role="strong">Caution: this may be
-    seizure-inducing.</emphasis> (lower the display size if you're
+        </p></li></ol></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="kha-api-2-display"></a>Kha API 2: Display</h3></div></div></div><p>
+    Now we will render a very simple "strobe the screen with
+    different colors". <span class="strong"><strong>Caution: this may be
+    seizure-inducing.</strong></span> (lower the display size if you're
     worried)
-  </para>
-  <section id="empty.hx-1">
-    <title>Empty.hx</title>
-    <programlisting language="haxe">
+  </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="empty.hx-1"></a>Empty.hx</h4></div></div></div><pre class="programlisting">
 package;
 import kha.Framebuffer;
 import kha.Color;
@@ -845,52 +560,36 @@ class Empty {
         
     }
 }
-</programlisting>
-  </section>
-  <section id="what-is-backbuffer.g1">
-    <title>What is &quot;backbuffer.g1&quot;?</title>
-    <para>
-      Kha contains different numbered &quot;levels&quot; of its graphics
+</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="what-is-backbuffer.g1"></a>What is "backbuffer.g1"?</h4></div></div></div><p>
+      Kha contains different numbered "levels" of its graphics
       API. Graphics1 is the simplest possible system: it can plot pixels
       only.
-    </para>
-    <para>
+    </p><p>
       Here is a replacement of that block using Graphics2:
-    </para>
-    <programlisting language="haxe">
+    </p><pre class="programlisting">
 var g = framebuffer.g2;
 g.begin();
 g.clear(nextcolor);
 g.end();
-</programlisting>
-    <para>
-      Graphics2 adds more &quot;standard&quot; functionality, including
+</pre><p>
+      Graphics2 adds more "standard" functionality, including
       clearing the screen, drawing shapes and blitting images. It's for
       general-case 2D applications, and its routines can be counted on
       to be faster than plotting individual pixels. We'll expand on
       Graphics2 in later chapters.
-    </para>
-    <para>
+    </p><p>
       There is also a Graphics4, which exposes the full shading
       pipeline. In theory Graphics3 represents fixed-function GPU
       pipelines, but it does not exist at this time. We will not venture
       into Graphics4 in this guide, and focus instead on fleshing out a
       game in Graphics2.
-    </para>
-  </section>
-  <section id="why-is-there-a-begin-and-end">
-    <title>Why is there a begin() and end()?</title>
-<literallayout>Kha batches the graphics operations internally and processes the actual drawing commands when it reaches end(). This lets you code your own rendering logic more freely, while letting Kha optimize the commands to whatever works best in the target environment.
-Next, let's respond to the keyboard and mouse. Kha provides raw input abstractions - you will still have to provide the high-level stuff like user customization.</literallayout>
-    <para>
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="why-is-there-a-begin-and-end"></a>Why is there a begin() and end()?</h4></div></div></div><div class="literallayout"><p>Kha batches the graphics operations internally and processes the actual drawing commands when it reaches end(). This lets you code your own rendering logic more freely, while letting Kha optimize the commands to whatever works best in the target environment.<br>
+Next, let's respond to the keyboard and mouse. Kha provides raw input abstractions - you will still have to provide the high-level stuff like user customization.</p></div><p>
       For our game, we're only going to have one button. We'll take this
       an extra step by also mapping the mouse buttons. The example code
       now toggles the screen between white and black when the button is
       pressed.
-    </para>
-    <section id="empty.hx-2">
-      <title>Empty.hx</title>
-      <programlisting language="haxe">
+    </p><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="empty.hx-2"></a>Empty.hx</h5></div></div></div><pre class="programlisting">
 package;
 import kha.Framebuffer;
 import kha.Color;
@@ -907,11 +606,11 @@ class Empty {
     public var fire = false;
     
     public function onDown(k : Key, s : String) {
-        trace(s + &quot; down&quot;);
+        trace(s + " down");
         fire = true;
     }
     public function onUp(k : Key, s : String) {
-        trace(s+&quot; up&quot;);
+        trace(s+" up");
         fire = false;
     }
     public function onDownMouse(button : Int, x : Int, y : Int) {
@@ -937,231 +636,148 @@ class Empty {
         
     }
 }
-</programlisting>
-    </section>
-  </section>
-</section>
-<section id="kha.input.keyboard">
-  <title>kha.input.Keyboard</title>
-  <para>
+</pre></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="kha.input.keyboard"></a>kha.input.Keyboard</h3></div></div></div><p>
     This is an abstraction for keyboard input. It has a get() method
     that optionally takes a number. This allows more than one keyboard
     to be detected and used by Kha; a similar pattern applies for all
     input devices.
-  </para>
-  <para>
+  </p><p>
     Once you have a Keyboard, register callbacks using notify(). The
     Keyboard callback uses these arguments:
-  </para>
-  <programlisting>
+  </p><pre class="programlisting">
 key : Key, string : String 
-</programlisting>
-  <para>
-    where &quot;key&quot; is the Key enum and &quot;string&quot; is the
+</pre><p>
+    where "key" is the Key enum and "string" is the
     character value of the key.
-  </para>
-</section>
-<section id="kha.key">
-  <title>kha.Key</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="kha.key"></a>kha.Key</h3></div></div></div><p>
     This is an Enum for the keypress type. Some frameworks monitor
-    &quot;held&quot; keys like Shift, Ctrl or Alt and pass them in as
+    "held" keys like Shift, Ctrl or Alt and pass them in as
     flags on the keyboard event, but Kha takes the approach of sending a
     new event for each one. It also includes some non-character keys
     like the arrow keys in this enum.
-  </para>
-  <para>
+  </p><p>
     For everything else, Kha passes in string data to the Keyboard
     callback.
-  </para>
-</section>
-<section id="kha.input.mouse">
-  <title>kha.input.Mouse</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="kha.input.mouse"></a>kha.input.Mouse</h3></div></div></div><p>
     As with Keyboard, Mouse.get() returns a device instance and notify()
     registers callbacks. The Mouse callback uses these arguments:
-  </para>
-  <programlisting>
+  </p><pre class="programlisting">
 button : Int, x : Int, y : Int 
-</programlisting>
-  <para>
-    where &quot;button&quot; is the button pressed and &quot;x&quot; and
-    &quot;y&quot; are the screen coordinates.
-  </para>
-<literallayout>Mouse additionally has methods for locking the cursor focus and hiding its display.
-We will make a clone of the 70's Atari game &quot;Canyon Bomber&quot;. In this game, a plane flies over a canyon in side view and drops bombs, trying to clear away all the rocks on the board without missing. It's one of the earliest &quot;one-button games&quot; and presents a well-rounded exercise for Kha's toolset.</literallayout>
-  <para>
+</pre><p>
+    where "button" is the button pressed and "x" and
+    "y" are the screen coordinates.
+  </p><div class="literallayout"><p>Mouse additionally has methods for locking the cursor focus and hiding its display.<br>
+We will make a clone of the 70's Atari game "Canyon Bomber". In this game, a plane flies over a canyon in side view and drops bombs, trying to clear away all the rocks on the board without missing. It's one of the earliest "one-button games" and presents a well-rounded exercise for Kha's toolset.</p></div><p>
     In this passage we'll work on moving a rectangle across the screen
     over time, introducing timing and simple animation. The rectangle
-    will later become the &quot;bomber plane&quot; in our game.
-  </para>
-  <section id="timing-in-kha">
-    <title>Timing in Kha</title>
-    <para>
+    will later become the "bomber plane" in our game.
+  </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="timing-in-kha"></a>Timing in Kha</h4></div></div></div><p>
       Kha contains a sophisticated timing and scheduling system, but
       also lets you dig into raw timing data.
-    </para>
-    <programlisting>
+    </p><pre class="programlisting">
 Scheduler.addTimeTask(game.simulate, 0, 1 / 60);
-</programlisting>
-    <para>
+</pre><p>
       This uses the Scheduler API to call game.simulate 60 times a
       second(every ~16.6 ms), indefinitely.
-    </para>
-    <section id="period-vs.-duration">
-      <title>Period vs. Duration</title>
-      <para>
+    </p><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="period-vs.-duration"></a>Period vs. Duration</h5></div></div></div><p>
         Period is the total length of a scheduled task. Duration is the
         frequency at which the task is repeated.
-      </para>
-      <para>
+      </p><p>
         For example, if you wish to call an event 30 times a second, but
         for only 2 seconds, you would add a task with a duration of 1/30
         and a period of 2.
-      </para>
-    </section>
-    <section id="realtime-and-time">
-      <title>realTime() and time()</title>
-      <para>
+      </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="realtime-and-time"></a>realTime() and time()</h5></div></div></div><p>
         To get the current time since start, you can use:
-      </para>
-      <programlisting>
+      </p><pre class="programlisting">
 Scheduler.time();
-</programlisting>
-      <para>
+</pre><p>
         and
-      </para>
-      <programlisting>
+      </p><pre class="programlisting">
 Scheduler.realTime();
-</programlisting>
-      <para>
+</pre><p>
         Scheduler will automatically apply smoothing, limiting, and
         atomization to timing data so that the average-case experience
         is as jitter and pause-free as possible.
-      </para>
-      <itemizedlist spacing="compact">
-        <listitem>
-          <para>
+      </p><div class="itemizedlist"><ul class="itemizedlist compact" style="list-style-type: disc; "><li class="listitem"><p>
             Scheduler.time() is the time that has passed after these
             adjustments.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
+          </p></li><li class="listitem"><p>
             Scheduler.realTime() is the system global time, or
-            &quot;wall clock&quot; time. Use this one for performance
+            "wall clock" time. Use this one for performance
             data, or if you want to do your own timing from scratch.
-          </para>
-        </listitem>
-      </itemizedlist>
-    </section>
-    <section id="why-atomic-timing-is-useful">
-      <title>Why atomic timing is useful</title>
-      <para>
+          </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="why-atomic-timing-is-useful"></a>Why atomic timing is useful</h5></div></div></div><p>
         It is tempting to plug in a delta time into your physics
         equations, tweens, etc. and allow the time to float freely.
         Sometimes this is even a correct approach.
-      </para>
-      <para>
+      </p><p>
         However, there are two reasons not to do this. One is that it
         makes physics simulations inconsistent - often wildly so. Jump
         heights will be unpredictable, people will go flying at strange
         velocities, etc. The other is that it hurts reproducability
         otherwise, for example if you are recording a demo for playback.
-      </para>
-      <para>
+      </p><p>
         Therefore, the most flexible approach is to chop up delta times
-        into regular &quot;atoms&quot; of time, and play through them
+        into regular "atoms" of time, and play through them
         one at a time. This is what Kha does inside its Scheduler API.
         It is even designed to support complex use-cases where timers
         get called in a certain order, or are paused or cancelled while
         active.
-      </para>
-    </section>
-  </section>
-  <section id="drawing-rectangles">
-    <title>Drawing rectangles</title>
-    <para>
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="drawing-rectangles"></a>Drawing rectangles</h4></div></div></div><p>
       We use Graphics2.fillRect() to draw some rectangles. In doing so,
-      we also make use of the &quot;color&quot; attribute on Graphics2.
+      we also make use of the "color" attribute on Graphics2.
       We already used some color to do our full-screen strobe, but here
       we can see more clearly what is going on.
-    </para>
-    <para>
-      Graphics2 uses a &quot;finite state&quot; model of rendering,
+    </p><p>
+      Graphics2 uses a "finite state" model of rendering,
       where we describe a configuration for drawing, and then issue a
       command that updates the state of the framebuffer we are drawing
       to. So when we change color, that changes the color of the drawing
       commands we issue after that change.
-    </para>
-  </section>
-  <section id="scaling">
-    <title>Scaling</title>
-    <para>
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="scaling"></a>Scaling</h4></div></div></div><p>
       Oh, how inconvenient! We aren't always going to get the resolution
       we request returned in System.pixelWidth and System.pixelHeight.
       After all, the system can't always give you what you ask for.
-    </para>
-    <para>
+    </p><p>
       That also means that if we want to force a certain pixel
       resolution - and this is the type of game where that happens -
       we're going to have to think about scaling.
-    </para>
-    <para>
+    </p><p>
       There are two ways we can approach this.
-    </para>
-    <orderedlist spacing="compact">
-      <listitem>
-        <para>
-          The more &quot;pixel-perfect&quot; way would be to have a
-          &quot;<emphasis>back buffer</emphasis>&quot;. Instance an
+    </p><div class="orderedlist"><ol class="orderedlist compact" type="1"><li class="listitem"><p>
+          The more "pixel-perfect" way would be to have a
+          "<span class="emphasis"><em>back buffer</em></span>". Instance an
           Image at our ideal resolution, draw the gameplay on that, then
           draw that, scaled, to the display buffer. That guarantees that
           everything stays on the same pixel grid, no matter what we do.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          But we'll go the other route of adding a <emphasis>scaling
-          transform</emphasis> using a FastMatrix3 before our drawing
+        </p></li><li class="listitem"><p>
+          But we'll go the other route of adding a <span class="emphasis"><em>scaling
+          transform</em></span> using a FastMatrix3 before our drawing
           calls. This will give us the correct proportions, and it
           avoids an additional trip through the GPU, so it may be
           somewhat faster, but it means that objects may look
-          &quot;wrong&quot; if they are scaled, rotated, or placed on
+          "wrong" if they are scaled, rotated, or placed on
           subpixel coordinates.
-        </para>
-      </listitem>
-    </orderedlist>
-    <para>
+        </p></li></ol></div><p>
       It's very easy to swap between these two methods if you prefer one
       or the other. Variations like only scaling to integer factors of
       the original, cropping the image, etc. are also possible.
-    </para>
-  </section>
-  <section id="the-planes-data-structure-and-algorithms">
-    <title>The plane's data structure and algorithms</title>
-    <para>
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="the-planes-data-structure-and-algorithms"></a>The plane's data structure and algorithms</h4></div></div></div><p>
       I decided to make the plane a Haxe Typedef with an x and y
       position, x and y velocity, and a width and height. Although we
       don't have to define a width and height as a
-      <emphasis>variable</emphasis> on the plane - it's never going to
+      <span class="emphasis"><em>variable</em></span> on the plane - it's never going to
       change during gameplay - it's convenient for us, so I splurged.
-    </para>
-    <para>
+    </p><p>
       The screen space and the physics space in Canyon Bomber are 1:1,
       and the camera is locked in one position, so no coordinate
       conversions have to take place during rendering - I just enter the
       position and size directly. If I wanted to scroll the screen or
       zoom in and out, this part would become more complex.
-    </para>
-    <para>
+    </p><p>
       Then I wrote a routine to move it across the screen each update,
       and make it wrap around as it runs off the edge. This routine will
       get more complex later(and so will the plane's data).
-    </para>
-    <section id="empty.hx-3">
-      <title>Empty.hx</title>
-      <programlisting language="haxe">
+    </p><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="empty.hx-3"></a>Empty.hx</h5></div></div></div><pre class="programlisting">
 package;
 import kha.Framebuffer;
 import kha.Color;
@@ -1184,11 +800,11 @@ class Empty {
     var plane = { x:0., y:0., w:8., h:8., vx:1., vy:0. };
     
     public function onDown(k : Key, s : String) {
-        trace(s + &quot; down&quot;);
+        trace(s + " down");
         fire = true;
     }
     public function onUp(k : Key, s : String) {
-        trace(s+&quot; up&quot;);
+        trace(s+" up");
         fire = false;
     }
     public function onDownMouse(button : Int, x : Int, y : Int) {
@@ -1233,16 +849,11 @@ class Empty {
         }
     }
 }
-</programlisting>
-      <para>
+</pre><p>
         Here we add the interaction where the player can drop a bomb by
         pressing a button, and get rid of the input debug stuff now that
-        we have a &quot;real&quot; input response.
-      </para>
-    </section>
-    <section id="empty.hx-4">
-      <title>Empty.hx</title>
-      <programlisting language="haxe">
+        we have a "real" input response.
+      </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="empty.hx-4"></a>Empty.hx</h5></div></div></div><pre class="programlisting">
 package;
 import kha.Framebuffer;
 import kha.Color;
@@ -1336,69 +947,53 @@ class Empty {
         }
     }
 }
-</programlisting>
-      <para>
+</pre><p>
         Here we add some simple tilemap rendering to present a canyon
         filled with rocks. I compile the generic tilemap manipulation
         stuff into a new file and class named Tilemap.hx for
         convenience. Most of the interesting parts will always remain
         custom to the game, and I put those in Empty.
-      </para>
-      <para>
+      </p><p>
         We also add a level start, and some constants to specify the
         size of the level, and some procedural terrain. The bomb doesn't
         interact with the terrain yet, but we'll get there soon!
-      </para>
-      <para>
+      </p><p>
         You may notice that I use a one-dimensional array to describe
         the tiles. This is a convention I adopted some years ago because
         it turned out to be simpler for any task that involved the whole
         map: I could iterate over one array, instead of an array of
         arrays.
-      </para>
-      <para>
+      </p><p>
         It is also straightforward to convert between a single
-        &quot;tile index&quot; integer and an (x, y) pair.
-      </para>
-      <para>
+        "tile index" integer and an (x, y) pair.
+      </p><p>
         To go from the pair to the index:
-      </para>
-      <programlisting language="haxe">
+      </p><pre class="programlisting">
     y * MAP_W + x
-</programlisting>
-      <para>
+</pre><p>
         To extract the x position:
-      </para>
-      <programlisting language="haxe">
+      </p><pre class="programlisting">
     idx % MAP_W
-</programlisting>
-      <para>
+</pre><p>
         To extract the y position:
-      </para>
-      <programlisting language="haxe">
+      </p><pre class="programlisting">
     Std.int(idx / MAP_W)
-</programlisting>
-      <para>
+</pre><p>
         The most challenging aspect of tilemaps is always with their
         boundaries. Either fallbacks to accommodate edges and
         out-of-bounds always have to be included, or the map has to have
         some kind of built-in padding in its data so that the
         out-of-bounds case is functionally impossible.
-      </para>
-      <para>
+      </p><p>
         The canyon is generated with a procedural technique, converting
         a sequence of heights to a 2D tilemap. To give it the feeling of
-        having a &quot;dip&quot; in the middle, I took samples of one
+        having a "dip" in the middle, I took samples of one
         half of a sine wave cycle. Then I added noise to each sample.
         Finally, I added a smoothing process so that the gaps were not
         too narrow, making an impossible configuration less likely. (A
-        &quot;real&quot; game might strive to find a more rigorous way
+        "real" game might strive to find a more rigorous way
         of doing this.)
-      </para>
-    </section>
-    <section id="tilemap.hx">
-      <title>Tilemap.hx</title>
-      <programlisting language="haxe">
+      </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="tilemap.hx"></a>Tilemap.hx</h5></div></div></div><pre class="programlisting">
 package;
 
 class Tilemap&lt;T&gt; {
@@ -1458,11 +1053,7 @@ class Tilemap&lt;T&gt; {
     }
     
 }
-</programlisting>
-    </section>
-    <section id="empty.hx-5">
-      <title>Empty.hx</title>
-      <programlisting language="haxe">
+</pre></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="empty.hx-5"></a>Empty.hx</h5></div></div></div><pre class="programlisting">
 package;
 import kha.Framebuffer;
 import kha.Color;
@@ -1632,26 +1223,22 @@ class Empty {
         }
     }
 }
-</programlisting>
-      <para>
+</pre><p>
         Most action games use a collision simulation for the basic
-        &quot;feel&quot; of the game - or to put it another way,
-        &quot;collision is gameplay&quot;. This also means that
+        "feel" of the game - or to put it another way,
+        "collision is gameplay". This also means that
         collision is customized to each game.
-      </para>
-      <para>
+      </p><p>
         For Canyon Bomber, we have a simple case: we want the bombs to
         clear away rocks until they touch a wall or go offscreen.
-      </para>
-      <para>
+      </p><p>
         To do this we sample each corner of the bomb each frame and
         translate that into a tile coordinate. Then we modify the tile
         if it's a rock, and tell the bomb whether or not it has died. As
         we proceed through the rest of the guide, we'll refine this
-        collision behavior some more so that the bomb &quot;feels&quot;
+        collision behavior some more so that the bomb "feels"
         correct.
-      </para>
-      <para>
+      </p><p>
         One of the common mathematics challenges that appears during
         game coding is conversion between coordinate systems. Any time
         you have a tile grid, you will encounter some reason to convert
@@ -1660,18 +1247,13 @@ class Empty {
         want to find the boundaries of a rectangle on the tile grid, or
         you are trying to collide an actor against terrain described
         through the tilemap(the case we have with the bomb).
-      </para>
-      <para>
+      </p><p>
         I already built the conversions we need into Tilemap.hx,
         fortunately, so we will be using those. The most important part,
         since we're working on a one-dimensional array, is that the i()
         and p2i() methods automatically detect invalid coordinates and
         return a correspondingly invalid tile index.
-      </para>
-    </section>
-    <section id="empty.hx-6">
-      <title>Empty.hx</title>
-      <programlisting language="haxe">
+      </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="empty.hx-6"></a>Empty.hx</h5></div></div></div><pre class="programlisting">
 package;
 import kha.Framebuffer;
 import kha.Color;
@@ -1863,28 +1445,21 @@ class Empty {
     }
     
 }
-</programlisting>
-      <para>
+</pre><p>
         The other part of Canyon Bomber's collision is for the rocks to
         fall down after the bomb clears underlying areas.
-      </para>
-      <para>
+      </p><p>
         To do this we scan upwards from the bottom of the tile grid. We
         don't have any cascading behavior where the rocks fall to the
-        sides (e.g. <emphasis>Boulder Dash</emphasis>), they just fall
+        sides (e.g. <span class="emphasis"><em>Boulder Dash</em></span>), they just fall
         and stack up in a vertical column. So all we have to do is
         trigger it on the update() and give it a delay timer so that the
         fall rate is believable. (I could use Scheduler for this, but
         prefer having a clear flow through the simulation.)
-      </para>
-      <para>
+      </p><p>
         I added some speed to the plane so that we can see the effect
         more clearly.
-      </para>
-    </section>
-    <section id="empty.hx-7">
-      <title>Empty.hx</title>
-      <programlisting language="haxe">
+      </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="empty.hx-7"></a>Empty.hx</h5></div></div></div><pre class="programlisting">
 package;
 import kha.Framebuffer;
 import kha.Color;
@@ -2096,125 +1671,74 @@ class Empty {
     }
     
 }
-</programlisting>
-      <para>
+</pre><p>
         Let's render some text so that we can start displaying score and
         lives.
-      </para>
-      <para>
+      </p><p>
         Now, if we wanted to do bitmap text like what was in the
         original game, we could start using Graphic2's sprite
         functionality to do so. But we are still in a prototyping mode
         and it'll be simpler to explore the Font API.
-      </para>
-      <para>
+      </p><p>
         First of all, we need to include a font asset in the project.
         Kha fonts are standard TTF files. They are converted to static
         font assets - i.e. you specify what sizes and stylings you will
         use at build time.
-      </para>
-      <para>
+      </p><p>
         Recall that khamake uses node.js. This extends into how we
-        script builds; rather than use a &quot;plain old data&quot;
+        script builds; rather than use a "plain old data"
         configuration file, we write a little bit of Javascript in a
-        file called &quot;khafile.js&quot;. This file appears in the
+        file called "khafile.js". This file appears in the
         root of the project.
-      </para>
-    </section>
-    <section id="khafile.js">
-      <title>khafile.js</title>
-      <programlisting language="javascript">
-var project = new Project(&quot;Empty&quot;); // instance the project
+      </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="khafile.js"></a>khafile.js</h5></div></div></div><pre class="programlisting">
+var project = new Project("Empty"); // instance the project
 
 project.addSources('Sources'); // add a source code path.
 project.addAssets('Assets/**'); // add an asset path.
-</programlisting>
-      <para>
-        Empty project doesn't have &quot;Assets&quot; by default.
-      </para>
-      <orderedlist spacing="compact">
-        <listitem>
-          <para>
+</pre><p>
+        Empty project doesn't have "Assets" by default.
+      </p><div class="orderedlist"><ol class="orderedlist compact" type="1"><li class="listitem"><p>
             Add the addAssets line.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Make an &quot;Assets&quot; directory, and drop
-            <ulink url="LINKME">arial.ttf</ulink> into Assets.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
+          </p></li><li class="listitem"><p>
+            Make an "Assets" directory, and drop
+            <a class="ulink" href="LINKME" target="_top">arial.ttf</a> into Assets.
+          </p></li><li class="listitem"><p>
             Run khamake again.
-          </para>
-        </listitem>
-      </orderedlist>
-      <para>
+          </p></li></ol></div><p>
         The Project API also lets you add compiler defines and external
         libraries. The relevant khamake source code can be viewed in
-        &quot;Kha/Tools/khamake/Project.js&quot;.
-      </para>
-    </section>
-  </section>
-</section>
-<section id="code-changes">
-  <title>Code changes</title>
-  <para>
+        "Kha/Tools/khamake/Project.js".
+      </p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="code-changes"></a>Code changes</h3></div></div></div><p>
     Now that we have an asset, we also have to manage loading.
-  </para>
-  <itemizedlist spacing="compact">
-    <listitem>
-      <para>
+  </p><div class="itemizedlist"><ul class="itemizedlist compact" style="list-style-type: disc; "><li class="listitem"><p>
         Kha gives you a simple, blunt instrument to load things with:
-        &quot;Assets.loadEverything()&quot;. The argument to
+        "Assets.loadEverything()". The argument to
         loadEverything is a callback function for when the load is
         finished.
-      </para>
-    </listitem>
-  </itemizedlist>
-  <blockquote>
-    <para>
+      </p></li></ul></div><div class="blockquote"><blockquote class="blockquote"><p>
       Assets also has other, more refined methods that let you pick and
       choose, but in a simple game that loads everything into memory
       once, this is the right solution. For the more complex case, each
       asset also has an unload() method, allowing you to move them in
       and out of memory as needed.
-    </para>
-  </blockquote>
-  <itemizedlist>
-    <listitem>
-      <para>
+    </p></blockquote></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
         Once everything is loaded, we turn on a flag that lets the
         update and render callbacks progress.
-      </para>
-    </listitem>
-    <listitem>
-      <para>
-        To actually display the text, set &quot;font&quot; and
-        &quot;fontSize&quot; state on Graphics2, and then issue a
+      </p></li><li class="listitem"><p>
+        To actually display the text, set "font" and
+        "fontSize" state on Graphics2, and then issue a
         drawString() command:
-      </para>
-      <para>
+      </p><p>
         drawString(s : String, x : Float, y : Float);
-      </para>
-    </listitem>
-  </itemizedlist>
-  <para>
+      </p></li></ul></div><p>
     The string draws with the specified pixel at top-left. You can use
     the font.width(), font.height(), and font.baseline() attributes as
     building blocks for text formatting. Each of those sizing methods
     takes the font size as a parameter.
-  </para>
-  <blockquote>
-    <para>
+  </p><div class="blockquote"><blockquote class="blockquote"><p>
       The text colors differently when the bomb is dropped. This is a
       fun side-effect bug that I decided to leave in.
-    </para>
-  </blockquote>
-  <section id="empty.hx-8">
-    <title>Empty.hx</title>
-    <programlisting language="haxe">
+    </p></blockquote></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="empty.hx-8"></a>Empty.hx</h4></div></div></div><pre class="programlisting">
 package;
 import kha.Framebuffer;
 import kha.Color;
@@ -2358,8 +1882,8 @@ class Empty {
             { // render some text
                 g.font = Assets.fonts.arial;
                 g.fontSize = 14;
-                g.drawString(&quot;Canyon Bomber&quot;, 
-                    WIDTH / 2 - g.font.width(14, &quot;Canyon Bomber&quot;) / 2,
+                g.drawString("Canyon Bomber", 
+                    WIDTH / 2 - g.font.width(14, "Canyon Bomber") / 2,
                     8
                 );
             }
@@ -2438,38 +1962,31 @@ class Empty {
     }
     
 }
-</programlisting>
-    <para>
+</pre><p>
       Now we add the scoring, lives, level progression, and game over
       state. A lot of meat gets added to the game logic in this section,
       but API calls do not really change. Review this section if you are
       interested in gameplay code, or if you need to compare against the
       later steps where more assets come in.
-    </para>
-    <para>
+    </p><p>
       To make the rocks score different values I introduce a parameter
       to MTRock. This changes our comparison code slightly, and opens up
       some options for rendering.
-    </para>
-    <blockquote>
-      <para>
+    </p><div class="blockquote"><blockquote class="blockquote"><p>
         Parameterization may change the performance characteristics of
         Enum values. If they have no parameters, you may typically
         consider them as integer constants - otherwise, think of the
         implementation as being similar to full object instances
         underneath. These details may change depending on the target you
         are working with.
-      </para>
-    </blockquote>
-    <para>
+      </p></blockquote></div><p>
       I made some adjustments to the plane motion so that it is more
       randomized, and at varying heights on each pass. The speed
       gradually ramps up over time now. (In the original game this is
       represented by switching from balloons to planes - maybe the wind
       picked up or something?) The bombs also now have a time/damage
       counter on them that limits their progress through the boulders.
-    </para>
-    <para>
+    </p><p>
       As I made these additions I also decided to model the game's
       entities with named Typedefs instead of anonymous objects, and
       iterate over an array of players instead of just one. This moves
@@ -2479,17 +1996,12 @@ class Empty {
       doesn't try to decouple the data(e.g. a collision structure used
       by both plane and bombs), but for this simple game it is
       sufficient.
-    </para>
-    <para>
-      A &quot;real&quot; HUD now appears, since we're tracking scores
+    </p><p>
+      A "real" HUD now appears, since we're tracking scores
       and lives. One of the numerous challenges of adding multiplayer is
       the additional UI elements needed, and in this case I evade the
       problem by only looking at Player 1.
-    </para>
-  </section>
-  <section id="empty.hx-9">
-    <title>Empty.hx</title>
-    <programlisting language="haxe">
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="empty.hx-9"></a>Empty.hx</h4></div></div></div><pre class="programlisting">
 package;
 import kha.Framebuffer;
 import kha.Color;
@@ -2825,91 +2337,56 @@ class Empty {
     }
     
 }
-</programlisting>
-    <para>
+</pre><p>
       Sprites are bitmap images that can be moved around the screen;
       they replace the rectangles we've been using up until this point.
       Adding sprites will make the game feel a lot less prototype-y.
       This is a big step and walks us through the asset creation process
       as well as code.
-    </para>
-    <para>
+    </p><p>
       First of all, we need to have some assets to work with.
-    </para>
-    <para>
-      <ulink url="LINKME">Mockup</ulink>
-    </para>
-    <para>
+    </p><p>
+      <a class="ulink" href="LINKME" target="_top">Mockup</a>
+    </p><p>
       I drew up a mockup with some simple sprites and tiles, based on
       the original game, but adding a little more detail.
-    </para>
-    <para>
+    </p><p>
       Now, we have a few options for turning this mockup into usable
       assets. Kha will take care of converting and packaging the image
       when we rebuild the project. But we still need to assign
-      &quot;meanings&quot; to the assets that make them equivalent to
+      "meanings" to the assets that make them equivalent to
       the rectangles we've been using up until now.
-    </para>
-    <itemizedlist spacing="compact">
-      <listitem>
-        <para>
+    </p><div class="itemizedlist"><ul class="itemizedlist compact" style="list-style-type: disc; "><li class="listitem"><p>
           We could split it into one image for each asset, and refer to
           different files.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           We could realign them in a simple tile pattern, and then index
           by the tile number.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           Or we could define bounding boxes on the original image.
-        </para>
-      </listitem>
-    </itemizedlist>
-    <para>
+        </p></li></ul></div><p>
       I'm going to take this last approach, using my own tool,
-      <ulink url="http://triplefox.itch.io/pixelbound">Pixelbound</ulink>.
+      <a class="ulink" href="http://triplefox.itch.io/pixelbound" target="_top">Pixelbound</a>.
       It's free(or pay what you want) and comes with source code.
       Pixelbound makes it very simple to define bounding boxes on
       mockups. This also has the benefit of letting me specify collision
       boxes independently of the sprite, if I want.
-    </para>
-    <para>
+    </p><p>
       The output of Pixelbound is a JSON file containing some
       coordinates:
-    </para>
-  </section>
-  <section id="spritedata.json">
-    <title>spritedata.json</title>
-    <programlisting language="json">
-{&quot;images&quot;:[{&quot;names&quot;:[&quot;blimp&quot;,&quot;plane&quot;,&quot;block&quot;,&quot;boulder&quot;,&quot;bomb&quot;,&quot;explosion1&quot;,&quot;explosion2&quot;,&quot;explosion3&quot;,&quot;explosion4&quot;,&quot;blocktl&quot;,&quot;blocktr&quot;,&quot;blockbl&quot;,&quot;blockbr&quot;,&quot;alphabet1&quot;,&quot;rect035&quot;,&quot;rect036&quot;,&quot;rect037&quot;,&quot;rect038&quot;,&quot;rect039&quot;,&quot;rect040&quot;,&quot;rect041&quot;,&quot;rect042&quot;,&quot;rect043&quot;,&quot;rect044&quot;,&quot;rect045&quot;,&quot;rect046&quot;,&quot;rect047&quot;,&quot;rect048&quot;,&quot;rect049&quot;,&quot;rect050&quot;,&quot;rect051&quot;,&quot;rect052&quot;,&quot;rect053&quot;,&quot;rect054&quot;,&quot;rect055&quot;,&quot;rect056&quot;,&quot;rect057&quot;,&quot;rect058&quot;,&quot;rect059&quot;,&quot;numbers1&quot;,&quot;rect015&quot;,&quot;rect016&quot;,&quot;rect017&quot;,&quot;rect018&quot;,&quot;rect019&quot;,&quot;rect020&quot;,&quot;rect021&quot;,&quot;rect022&quot;,&quot;rect023&quot;,&quot;alphabet2&quot;,&quot;rect061&quot;,&quot;rect062&quot;,&quot;rect063&quot;,&quot;rect064&quot;,&quot;rect065&quot;,&quot;rect066&quot;,&quot;rect067&quot;,&quot;rect068&quot;,&quot;rect069&quot;,&quot;rect070&quot;,&quot;rect071&quot;,&quot;rect072&quot;,&quot;rect073&quot;,&quot;rect074&quot;,&quot;rect075&quot;,&quot;rect076&quot;,&quot;rect077&quot;,&quot;rect078&quot;,&quot;rect079&quot;,&quot;rect080&quot;,&quot;rect081&quot;,&quot;rect082&quot;,&quot;rect083&quot;,&quot;rect084&quot;,&quot;rect085&quot;,&quot;numbers2&quot;,&quot;rect025&quot;,&quot;rect026&quot;,&quot;rect027&quot;,&quot;rect028&quot;,&quot;rect029&quot;,&quot;rect030&quot;,&quot;rect031&quot;,&quot;rect032&quot;,&quot;rect033&quot;],&quot;image_relative&quot;:&quot;sprites.png&quot;,&quot;rects&quot;:[\[0,0,32,15,0],[83,5,22,10,0],[48,16,8,8,0],[72,16,8,8,0],[15,18,3,4,0],[66,30,4,4,0],[72,31,8,7,0],[81,29,10,7,0],[93,31,7,5,0],[8,40,8,8,0],[24,40,8,8,0],[40,40,8,8,0],[56,40,8,8,0],[90,73,5,6,0],[96,73,5,6,0],[102,73,4,6,0],[107,73,5,6,0],[113,73,4,6,0],[118,73,4,6,0],[123,73,6,6,0],[130,73,5,6,0],[136,73,4,6,0],[141,73,4,6,0],[146,73,5,6,0],[90,80,4,6,0],[95,80,7,6,0],[103,80,6,6,0],[110,80,5,6,0],[116,80,5,6,0],[122,80,5,6,0],[128,80,5,6,0],[134,80,4,6,0],[139,80,4,6,0],[144,80,5,6,0],[90,87,6,6,0],[97,87,7,6,0],[105,87,5,6,0],[111,87,5,6,0],[117,87,5,6,0],[33,57,4,6,0],[38,57,5,6,0],[44,57,4,6,0],[49,57,5,6,0],[55,57,5,6,0],[61,57,5,6,0],[67,57,5,6,0],[73,57,5,6,0],[79,57,5,6,0],[85,57,5,6,0],[71,97,5,6,0],[77,97,5,6,0],[83,97,4,6,0],[88,97,5,6,0],[94,97,4,6,0],[99,97,4,6,0],[104,97,6,6,0],[111,97,5,6,0],[117,97,4,6,0],[122,97,4,6,0],[127,97,5,6,0],[71,104,4,6,0],[76,104,7,6,0],[84,104,6,6,0],[91,104,5,6,0],[97,104,5,6,0],[103,104,5,6,0],[109,104,5,6,0],[115,104,4,6,0],[120,104,4,6,0],[125,104,5,6,0],[71,111,6,6,0],[78,111,7,6,0],[86,111,5,6,0],[92,111,5,6,0],[98,111,5,6,0],[32,67,4,6,0],[37,67,5,6,0],[43,67,4,6,0],[48,67,5,6,0],[54,67,5,6,0],[60,67,5,6,0],[66,67,5,6,0],[72,67,5,6,0],[78,67,5,6,0],[84,67,5,6,0]\],&quot;image_absolute&quot;:&quot;C:\\khastuff\\Empty-master\\Assets\\sprites.png&quot;}],&quot;palette&quot;:[\[230,153,0],[0,153,128],[242,230,64],[0,115,179],[89,179,230],[204,102,0],[204,153,179],[0,0,0]\]}
-</programlisting>
-    <itemizedlist spacing="compact">
-      <listitem>
-        <para>
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="spritedata.json"></a>spritedata.json</h4></div></div></div><pre class="programlisting">
+{"images":[{"names":["blimp","plane","block","boulder","bomb","explosion1","explosion2","explosion3","explosion4","blocktl","blocktr","blockbl","blockbr","alphabet1","rect035","rect036","rect037","rect038","rect039","rect040","rect041","rect042","rect043","rect044","rect045","rect046","rect047","rect048","rect049","rect050","rect051","rect052","rect053","rect054","rect055","rect056","rect057","rect058","rect059","numbers1","rect015","rect016","rect017","rect018","rect019","rect020","rect021","rect022","rect023","alphabet2","rect061","rect062","rect063","rect064","rect065","rect066","rect067","rect068","rect069","rect070","rect071","rect072","rect073","rect074","rect075","rect076","rect077","rect078","rect079","rect080","rect081","rect082","rect083","rect084","rect085","numbers2","rect025","rect026","rect027","rect028","rect029","rect030","rect031","rect032","rect033"],"image_relative":"sprites.png","rects":[\[0,0,32,15,0],[83,5,22,10,0],[48,16,8,8,0],[72,16,8,8,0],[15,18,3,4,0],[66,30,4,4,0],[72,31,8,7,0],[81,29,10,7,0],[93,31,7,5,0],[8,40,8,8,0],[24,40,8,8,0],[40,40,8,8,0],[56,40,8,8,0],[90,73,5,6,0],[96,73,5,6,0],[102,73,4,6,0],[107,73,5,6,0],[113,73,4,6,0],[118,73,4,6,0],[123,73,6,6,0],[130,73,5,6,0],[136,73,4,6,0],[141,73,4,6,0],[146,73,5,6,0],[90,80,4,6,0],[95,80,7,6,0],[103,80,6,6,0],[110,80,5,6,0],[116,80,5,6,0],[122,80,5,6,0],[128,80,5,6,0],[134,80,4,6,0],[139,80,4,6,0],[144,80,5,6,0],[90,87,6,6,0],[97,87,7,6,0],[105,87,5,6,0],[111,87,5,6,0],[117,87,5,6,0],[33,57,4,6,0],[38,57,5,6,0],[44,57,4,6,0],[49,57,5,6,0],[55,57,5,6,0],[61,57,5,6,0],[67,57,5,6,0],[73,57,5,6,0],[79,57,5,6,0],[85,57,5,6,0],[71,97,5,6,0],[77,97,5,6,0],[83,97,4,6,0],[88,97,5,6,0],[94,97,4,6,0],[99,97,4,6,0],[104,97,6,6,0],[111,97,5,6,0],[117,97,4,6,0],[122,97,4,6,0],[127,97,5,6,0],[71,104,4,6,0],[76,104,7,6,0],[84,104,6,6,0],[91,104,5,6,0],[97,104,5,6,0],[103,104,5,6,0],[109,104,5,6,0],[115,104,4,6,0],[120,104,4,6,0],[125,104,5,6,0],[71,111,6,6,0],[78,111,7,6,0],[86,111,5,6,0],[92,111,5,6,0],[98,111,5,6,0],[32,67,4,6,0],[37,67,5,6,0],[43,67,4,6,0],[48,67,5,6,0],[54,67,5,6,0],[60,67,5,6,0],[66,67,5,6,0],[72,67,5,6,0],[78,67,5,6,0],[84,67,5,6,0]\],"image_absolute":"C:\\khastuff\\Empty-master\\Assets\\sprites.png"}],"palette":[\[230,153,0],[0,153,128],[242,230,64],[0,115,179],[89,179,230],[204,102,0],[204,153,179],[0,0,0]\]}
+</pre><div class="itemizedlist"><ul class="itemizedlist compact" style="list-style-type: disc; "><li class="listitem"><p>
           Now I take both of these files and add them to
-          &quot;Assets&quot;.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+          "Assets".
+        </p></li><li class="listitem"><p>
           Since we populated khafile.js when we added the font, we can
           run khamake now to add them to the project build.
-        </para>
-      </listitem>
-    </itemizedlist>
-    <para>
+        </p></li></ul></div><p>
       Finally, we write some library code to parse the JSON into
       easily-accessed assets, and build some drawing functionality that
       lets us easily swap out our existing code:
-    </para>
-  </section>
-  <section id="boundsdata.hx">
-    <title>BoundsData.hx</title>
-    <programlisting language="haxe">
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="boundsdata.hx"></a>BoundsData.hx</h4></div></div></div><pre class="programlisting">
 import haxe.Json;
 import kha.FastFloat;
 import kha.graphics2.Graphics;
@@ -3074,80 +2551,58 @@ class KhaBoundsData {
         }
     }   
 }
-</programlisting>
-    <para>
+</pre><p>
       In the main code, we replace the sprite calls, add some branching
       to switch between plane/blimp and mirror them for the correct
-      direction, add a &quot;smoothing&quot; process to the walls so
+      direction, add a "smoothing" process to the walls so
       that the diagonals look nicer, add an explosion
-      &quot;particle&quot;, and replace the Kha font calls with our cool
+      "particle", and replace the Kha font calls with our cool
       bitmapped font. Whew! Adding graphics sure does require a lot of
       code!
-    </para>
-    <para>
+    </p><p>
       Let's break each of those things down:
-    </para>
-  </section>
-</section>
-<section id="drawing-plane-blimp-and-bomb">
-  <title>Drawing Plane, Blimp, and Bomb</title>
-  <para>
+    </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="drawing-plane-blimp-and-bomb"></a>Drawing Plane, Blimp, and Bomb</h3></div></div></div><p>
     This is the simplest kind of sprite drawing: take some coordinates
     and throw an image up on the screen. It's only different from the
     rectangle drawing in that we're going to conform to the size of the
     sprite(and we don't even have to do that, necessarily, if we scale
     the sprite).
-  </para>
-  <para>
+  </p><p>
     We also mirror the plane and blimp. This is done by scaling the
     sprite with a negative X value.
-  </para>
-  <para>
+  </p><p>
     We can reuse all of our coloring code because I had the foresight to
     design the sprites to be grayscale, meaning we have a very colorful
     game without much effort!
-  </para>
-  <blockquote>
-    <para>
+  </p><div class="blockquote"><blockquote class="blockquote"><p>
       As explained in the Graphics2 API section, if you find the look of
-      the scaling to be &quot;wrong,&quot; try switching from using
+      the scaling to be "wrong," try switching from using
       transforms on FastMatrix3 to using a backbuffer at your preferred
       resolution.
-    </para>
-  </blockquote>
-</section>
-<section id="smoothing-the-walls">
-  <title>Smoothing the Walls</title>
-  <para>
-    Now we have more of a &quot;real&quot; tilemap situation, where some
+    </p></blockquote></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="smoothing-the-walls"></a>Smoothing the Walls</h3></div></div></div><p>
+    Now we have more of a "real" tilemap situation, where some
     tiles look different from others but share the same behaviors. One
     way we could approach the problem is to separate the visuals from
     the collision entirely - this is done by most games. But the simpler
     way for our game is to add a few more values to the Enum, and then
     update the corresponding switch statements to either behave the same
     way or render something different.
-  </para>
-  <para>
+  </p><p>
     Then the only thing left to do is to actually populate the walls
     correctly, which is done in an additional pass after the original
     canyon generation process finishes.
-  </para>
-</section>
-<section id="add-a-particle">
-  <title>Add a Particle</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="add-a-particle"></a>Add a Particle</h3></div></div></div><p>
     Real particle effects tend to involve some kind of particle
     simulation that can produce fluid-like effects like smoke, flames,
-    bubbles, etc. Again, we can simplify to &quot;basic&quot; particle
+    bubbles, etc. Again, we can simplify to "basic" particle
     programs whose instances hold a position and velocity state. We only
     use one type here to add little puffs when the rocks are broken, but
     more are certainly possible! And because we are using Haxe's enums,
     we can pass parameters into the program so that each instance of the
     particles may behave a bit differently.
-  </para>
-  <para>
+  </p><p>
     The way in which I spawn particles is also interesting and relevant
-    to any case in a game where there is a &quot;more than one&quot; in
+    to any case in a game where there is a "more than one" in
     the world. I assume that we will only ever have 64 particles at
     most, and allocate all of them. Then I process all of them each
     frame, using their timer value to determine liveness. This is a
@@ -3157,100 +2612,69 @@ class KhaBoundsData {
     with a lot of particles - it'll just stop spawning more. It also
     gives me a realistic measure of maximium system throughput. If I'm
     already iterating on my maximum quantity, then I can't be fooled
-    into thinking I have &quot;room to waste.&quot;
-  </para>
-</section>
-<section id="bitmap-font">
-  <title>Bitmap Font</title>
-  <para>
+    into thinking I have "room to waste."
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="bitmap-font"></a>Bitmap Font</h3></div></div></div><p>
     The font data is the most complex part of this whole rendering
     operation. The font rendering pipeline builds on top of the sprite
     rendering pipeline, but it has the complication of needing to map
     each character of the string to a sprite. It works by mapping a
-    given set of characters such as &quot;ABCDEF...&quot; to sprite
+    given set of characters such as "ABCDEF..." to sprite
     indexes, starting from a certain named sprite.
-  </para>
-  <para>
+  </p><p>
     I decided, after I had created them, to combine the
-    &quot;alphabet&quot; and &quot;number&quot; groups into one
+    "alphabet" and "number" groups into one
     continuous set each, which led to some manual rearrangement of the
     rectangles Pixelbound auto-generates so that they were in the proper
     order. Pixelbound doesn't have a group offset feature, but I was
     able to make the change by editing the JSON text.
-  </para>
-  <para>
+  </p><p>
     After doing all that work to configure the data, the rest is a
     matter of computing widths for each character based on the sprite
     data, and then adding some spacing. A more complex font engine can
     extend to additional layout, effects, more precise spacing and
     kerning, etc. The game includes some basic layout features in
-    string() and centerString() - it uses the two &quot;alphabets&quot;
+    string() and centerString() - it uses the two "alphabets"
     to make a shadow offset effect.
-  </para>
-</section>
-<section id="why-use-a-single-image-for-many-sprites">
-  <title>Why use a single image for many sprites?</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="why-use-a-single-image-for-many-sprites"></a>Why use a single image for many sprites?</h3></div></div></div><p>
     One of the benefits of using a single image for all the sprites, if
     you aren't aware, is that GPU drawing can be optimized. In the
-    jargon of GPU programming, a &quot;texture&quot; is referenced
-    before beginning a &quot;draw call&quot;. During a draw call, you
-    send a &quot;batch&quot; of geometry data - coordinates, offsets,
+    jargon of GPU programming, a "texture" is referenced
+    before beginning a "draw call". During a draw call, you
+    send a "batch" of geometry data - coordinates, offsets,
     etc. If you don't have to switch textures, the only unique thing the
     GPU has to process is geometry. Draw calls are a major bottleneck
     because they cause the GPU to idle, and the stop-start of frequent
     draw calls will kill performance.
-  </para>
-  <para>
+  </p><p>
     Therefore, the use of sprite sheets is one of the first
     optimizations encountered in 2D GPU drawing, and well-optimized 2D
-    games will &quot;pack&quot; their sprites tightly in sheets so as to
+    games will "pack" their sprites tightly in sheets so as to
     minimize draw calls. (This can be done by hand or by algorithm.)
-  </para>
-  <para>
+  </p><p>
     Graphics2 will do the behind-the-scenes work of optimizing your draw
     calls when you use drawSubImage() and its variants, so you don't
     have to know any more than that basic outline to get most of the
     benefit when working with Kha for 2D games.
-  </para>
-</section>
-<section id="what-if-i-want-to-upgrade-to-graphics4-later">
-  <title>What if I want to upgrade to Graphics4 later?</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="what-if-i-want-to-upgrade-to-graphics4-later"></a>What if I want to upgrade to Graphics4 later?</h3></div></div></div><p>
     Direct quote from Robert:
-  </para>
-  <blockquote>
-    <para>
-      <emphasis>g2 runs on g4 and can be mixed with g4 if your target
+  </p><div class="blockquote"><blockquote class="blockquote"><p>
+      <span class="emphasis"><em>g2 runs on g4 and can be mixed with g4 if your target
       supports g4 (most important exceptions are browsers that don't
       support webgl or don't activate it because of black-listed
-      drivers).</emphasis>
-    </para>
-  </blockquote>
-  <blockquote>
-    <para>
-      <emphasis>But g4 is a completely different thing than g2 and needs
-      a much bigger skillset. There are <ulink url="http://luboslenco.com/kha3d/">Lubos' tutorials</ulink>
-      though.</emphasis>
-    </para>
-  </blockquote>
-  <blockquote>
-    <para>
-      <emphasis>Oh and don't expect any speed improvements from d3d12.
+      drivers).</em></span>
+    </p></blockquote></div><div class="blockquote"><blockquote class="blockquote"><p>
+      <span class="emphasis"><em>But g4 is a completely different thing than g2 and needs
+      a much bigger skillset. There are <a class="ulink" href="http://luboslenco.com/kha3d/" target="_top">Lubos' tutorials</a>
+      though.</em></span>
+    </p></blockquote></div><div class="blockquote"><blockquote class="blockquote"><p>
+      <span class="emphasis"><em>Oh and don't expect any speed improvements from d3d12.
       d3d12 (and vulkan) is about low level control, not about magic
-      speed improvements.</emphasis>
-    </para>
-  </blockquote>
-  <blockquote>
-    <para>
-        <emphasis>
+      speed improvements.</em></span>
+    </p></blockquote></div><div class="blockquote"><blockquote class="blockquote"><p>
+        <span class="emphasis"><em>
         For mixing g2 and g4 have a closer look at kha.graphics4.Graphics2. Mostly it's important to call g2.flush at the right times.
-        </emphasis>
-    </para>
-  </blockquote>
-  <section id="empty.hx-10">
-    <title>Empty.hx</title>
-    <programlisting language="haxe">
+        </em></span>
+    </p></blockquote></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="empty.hx-10"></a>Empty.hx</h4></div></div></div><pre class="programlisting">
 package;
 import kha.Framebuffer;
 import kha.Color;
@@ -3343,17 +2767,17 @@ class Empty {
             [Assets.images.sprites],
             [
             {
-                font_name:&quot;alphabet1&quot;,
+                font_name:"alphabet1",
                 image_idx:0,
-                sprite_name:&quot;alphabet1&quot;,
-                characters:&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890&quot;,
+                sprite_name:"alphabet1",
+                characters:"ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
                 whitespace:4
             },
             {
-                font_name:&quot;alphabet2&quot;,
+                font_name:"alphabet2",
                 image_idx:0,
-                sprite_name:&quot;alphabet2&quot;,
-                characters:&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890&quot;,
+                sprite_name:"alphabet2",
+                characters:"ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
                 whitespace:4
             }
             ]
@@ -3478,22 +2902,22 @@ class Empty {
                             g.color = col_wall;
                             sprite.draw(g, 
                                 x * TILE_W, y * TILE_H, 
-                                0, &quot;block&quot;);
+                                0, "block");
                         case MTWallTL:
                             g.color = col_wall;
                             sprite.draw(g, 
                                 x * TILE_W, y * TILE_H, 
-                                0, &quot;blocktl&quot;);
+                                0, "blocktl");
                         case MTWallTR:
                             g.color = col_wall;
                             sprite.draw(g, 
                                 x * TILE_W, y * TILE_H, 
-                                0, &quot;blocktr&quot;);
+                                0, "blocktr");
                         case MTRock(v):
                             g.color = col_rock[v%5];
                             sprite.draw(g, 
                                 x * TILE_W, y * TILE_H, 
-                                0, &quot;boulder&quot;);                          
+                                0, "boulder");                          
                     }
                     x += 1;
                     if (x &gt;= MAP_W) { x = 0; y += 1; }
@@ -3505,9 +2929,9 @@ class Empty {
                     var mirror = 1;
                     var plane = p.plane;
                     if (plane.vx &lt; 0) mirror = -1;
-                    var spr = &quot;plane&quot;;
+                    var spr = "plane";
                     if (isBlimp(plane))
-                        spr = &quot;blimp&quot;;
+                        spr = "blimp";
                     sprite.drawCenterScaled(g, plane.x, plane.y,
                         plane.w, plane.h, 
                         mirror, 1, 0, spr);
@@ -3516,7 +2940,7 @@ class Empty {
                     var bomb = p.bomb;
                     g.color = col_bomb;
                     sprite.drawCenter(g, bomb.x, bomb.y, bomb.w, bomb.h, 
-                        0, &quot;bomb&quot;);
+                        0, "bomb");
                 }
             }
             for (p in particle) { // render particles
@@ -3674,16 +3098,16 @@ class Empty {
                     case Explosion:
                         p.sprite_image = 0;
                         if (p.time &gt; EXPLODE_1) {
-                            p.sprite_name = &quot;explosion1&quot;;
+                            p.sprite_name = "explosion1";
                         }
                         else if (p.time &gt; EXPLODE_2) {
-                            p.sprite_name = &quot;explosion2&quot;;
+                            p.sprite_name = "explosion2";
                         }
                         else if (p.time &gt; EXPLODE_3) {
-                            p.sprite_name = &quot;explosion3&quot;;
+                            p.sprite_name = "explosion3";
                         }
                         else {
-                            p.sprite_name = &quot;explosion4&quot;;
+                            p.sprite_name = "explosion4";
                         }
                         p.y -= 0.2;
                 }
@@ -3734,86 +3158,64 @@ class Empty {
             Std.int(x + 1),
             Std.int(y + 1),
             s,
-            &quot;alphabet2&quot;, spacing
+            "alphabet2", spacing
         );
         sprite.string(
             g, 
             Std.int(x),
             Std.int(y),
             s,
-            &quot;alphabet1&quot;, spacing
+            "alphabet1", spacing
         );
     }
     public function centerString(g, s, x : Float, y : Float, spacing) {
         sprite.string(
             g, 
-            Std.int(x - sprite.stringWidth(s, &quot;alphabet2&quot;, spacing) / 2 + 1),
-            Std.int(y - sprite.stringHeight(s, &quot;alphabet2&quot;) / 2 + 1),
+            Std.int(x - sprite.stringWidth(s, "alphabet2", spacing) / 2 + 1),
+            Std.int(y - sprite.stringHeight(s, "alphabet2") / 2 + 1),
             s,
-            &quot;alphabet2&quot;, spacing
+            "alphabet2", spacing
         );
         sprite.string(
             g, 
-            Std.int(x - sprite.stringWidth(s, &quot;alphabet1&quot;, spacing) / 2),
-            Std.int(y - sprite.stringHeight(s, &quot;alphabet1&quot;) / 2),
+            Std.int(x - sprite.stringWidth(s, "alphabet1", spacing) / 2),
+            Std.int(y - sprite.stringHeight(s, "alphabet1") / 2),
             s,
-            &quot;alphabet1&quot;, spacing
+            "alphabet1", spacing
         );
     }
     
 }
-</programlisting>
-    <para>
-      As with graphics, Kha has multiple &quot;levels&quot; of audio
+</pre><p>
+      As with graphics, Kha has multiple "levels" of audio
       API. Unlike graphics, they don't exactly build on each other.
-      Audio1 is a simplified &quot;recorded sound and music
-      playback&quot; routine, while Audio2 is a &quot;write your own
-      sample data&quot; low-level system. We'll stick with Audio1 here.
-    </para>
-    <para>
+      Audio1 is a simplified "recorded sound and music
+      playback" routine, while Audio2 is a "write your own
+      sample data" low-level system. We'll stick with Audio1 here.
+    </p><p>
       First, I figured out a rough asset list and recruited my friend,
-      <ulink url="s.hryx.net">Stevie Hryciw</ulink>, to make some sound
+      <a class="ulink" href="s.hryx.net" target="_top">Stevie Hryciw</a>, to make some sound
       effects and music. I initially targeted these:
-    </para>
-    <itemizedlist spacing="compact">
-      <listitem>
-        <para>
+    </p><div class="itemizedlist"><ul class="itemizedlist compact" style="list-style-type: disc; "><li class="listitem"><p>
           drop - when you trigger a bomb drop
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           hit - the bomb succeeded
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           miss - the bomb missed (or you lost a life)
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           break - a rock is broken
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           music - a background soundtrack
-        </para>
-      </listitem>
-    </itemizedlist>
-    <para>
+        </p></li></ul></div><p>
       Before I had these assets I made a simple sine wave sample using
       Audacity and copied that as a placeholder.
-    </para>
-    <para>
+    </p><p>
       After our first session, we had changed and expanded the asset
       list considerably to accommodate variations of similar sounds like
       the dropping and breaking noises. As tends to happen, the
       filenames also drifted away from my original scheme, so I updated
       the project to match.
-    </para>
-    <para>
+    </p><p>
       Integrating audio into the project can be time-consuming, just
       like graphical effects. Most of the fancy usage of Audio1 here
       revolves around cancelling sounds so that they cut off(the bomb
@@ -3821,48 +3223,25 @@ class Empty {
       plane and blimp have a sound loop with volume that is modulated
       over time, so that they get louder as they get near the center of
       the screen.
-    </para>
-    <para>
+    </p><p>
       FIXME TODO try to use the right API calls everywhere and not my
       cheap hacks
-    </para>
-  </section>
-</section>
-<section id="sound">
-  <title>Sound</title>
-  <para>
+    </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="sound"></a>Sound</h3></div></div></div><p>
     This is the asset type you use - you normally don't need to deal
     with it directly since the assets are baked into
-    &quot;Assets.sound&quot;.
-  </para>
-</section>
-<section id="audio1.audio">
-  <title>audio1.Audio</title>
-  <programlisting>
+    "Assets.sound".
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="audio1.audio"></a>audio1.Audio</h3></div></div></div><pre class="programlisting">
 Audio.play(sound : Sound, loop : Bool, stream : Bool) : AudioChannel;
-</programlisting>
-  <para>
+</pre><p>
     Usually you can call Audio.play(Assets.sound.mysound) for a basic
     one-shot sound.
-  </para>
-  <itemizedlist spacing="compact">
-    <listitem>
-      <para>
-        If the sound is meant to loop, set &quot;loop&quot; to true.
-      </para>
-    </listitem>
-    <listitem>
-      <para>
+  </p><div class="itemizedlist"><ul class="itemizedlist compact" style="list-style-type: disc; "><li class="listitem"><p>
+        If the sound is meant to loop, set "loop" to true.
+      </p></li><li class="listitem"><p>
         If the sound is a very large asset like music, set
-        &quot;stream&quot; to true so that you aren't loading the whole
+        "stream" to true so that you aren't loading the whole
         thing into memory at once.
-      </para>
-    </listitem>
-  </itemizedlist>
-</section>
-<section id="audio1.audiochannel">
-  <title>audio1.AudioChannel</title>
-  <para>
+      </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="audio1.audiochannel"></a>audio1.AudioChannel</h3></div></div></div><p>
     AudioChannel is returned after you start playing a Sound and
     contains some useful information about the state of the sound's
     playback: its volume, current sample position, length, and whether
@@ -3870,10 +3249,7 @@ Audio.play(sound : Sound, loop : Bool, stream : Bool) : AudioChannel;
     around to monitor and modulate its parameters. The instances of
     AudioChannel in Canyon Bomber are used to keep track of loops and
     sounds that will need to be cancelled.
-  </para>
-  <section id="empty.hx-11">
-    <title>Empty.hx</title>
-    <programlisting language="haxe">
+  </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="empty.hx-11"></a>Empty.hx</h4></div></div></div><pre class="programlisting">
 package;
 import kha.audio1.Audio;
 import kha.audio1.AudioChannel;
@@ -3977,17 +3353,17 @@ class Empty {
             [Assets.images.sprites],
             [
             {
-                font_name:&quot;alphabet1&quot;,
+                font_name:"alphabet1",
                 image_idx:0,
-                sprite_name:&quot;alphabet1&quot;,
-                characters:&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890&quot;,
+                sprite_name:"alphabet1",
+                characters:"ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
                 whitespace:4
             },
             {
-                font_name:&quot;alphabet2&quot;,
+                font_name:"alphabet2",
                 image_idx:0,
-                sprite_name:&quot;alphabet2&quot;,
-                characters:&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890&quot;,
+                sprite_name:"alphabet2",
+                characters:"ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
                 whitespace:4
             }
             ]
@@ -4112,22 +3488,22 @@ class Empty {
                             g.color = col_wall;
                             sprite.draw(g, 
                                 x * TILE_W, y * TILE_H, 
-                                0, &quot;block&quot;);
+                                0, "block");
                         case MTWallTL:
                             g.color = col_wall;
                             sprite.draw(g, 
                                 x * TILE_W, y * TILE_H, 
-                                0, &quot;blocktl&quot;);
+                                0, "blocktl");
                         case MTWallTR:
                             g.color = col_wall;
                             sprite.draw(g, 
                                 x * TILE_W, y * TILE_H, 
-                                0, &quot;blocktr&quot;);
+                                0, "blocktr");
                         case MTRock(v):
                             g.color = col_rock[v%5];
                             sprite.draw(g, 
                                 x * TILE_W, y * TILE_H, 
-                                0, &quot;boulder&quot;);                          
+                                0, "boulder");                          
                     }
                     x += 1;
                     if (x &gt;= MAP_W) { x = 0; y += 1; }
@@ -4139,9 +3515,9 @@ class Empty {
                     var mirror = 1;
                     var plane = p.plane;
                     if (plane.vx &lt; 0) mirror = -1;
-                    var spr = &quot;plane&quot;;
+                    var spr = "plane";
                     if (isBlimp(plane))
-                        spr = &quot;blimp&quot;;
+                        spr = "blimp";
                     sprite.drawCenterScaled(g, plane.x, plane.y,
                         plane.w, plane.h, 
                         mirror, 1, 0, spr);
@@ -4150,7 +3526,7 @@ class Empty {
                     var bomb = p.bomb;
                     g.color = col_bomb;
                     sprite.drawCenter(g, bomb.x, bomb.y, bomb.w, bomb.h, 
-                        0, &quot;bomb&quot;);
+                        0, "bomb");
                 }
             }
             for (p in particle) { // render particles
@@ -4340,16 +3716,16 @@ class Empty {
                     case Explosion:
                         p.sprite_image = 0;
                         if (p.time &gt; EXPLODE_1) {
-                            p.sprite_name = &quot;explosion1&quot;;
+                            p.sprite_name = "explosion1";
                         }
                         else if (p.time &gt; EXPLODE_2) {
-                            p.sprite_name = &quot;explosion2&quot;;
+                            p.sprite_name = "explosion2";
                         }
                         else if (p.time &gt; EXPLODE_3) {
-                            p.sprite_name = &quot;explosion3&quot;;
+                            p.sprite_name = "explosion3";
                         }
                         else {
-                            p.sprite_name = &quot;explosion4&quot;;
+                            p.sprite_name = "explosion4";
                         }
                         p.y -= 0.2;
                 }
@@ -4400,30 +3776,30 @@ class Empty {
             Std.int(x + 1),
             Std.int(y + 1),
             s,
-            &quot;alphabet2&quot;, spacing
+            "alphabet2", spacing
         );
         sprite.string(
             g, 
             Std.int(x),
             Std.int(y),
             s,
-            &quot;alphabet1&quot;, spacing
+            "alphabet1", spacing
         );
     }
     public function centerString(g, s, x : Float, y : Float, spacing) {
         sprite.string(
             g, 
-            Std.int(x - sprite.stringWidth(s, &quot;alphabet2&quot;, spacing) / 2 + 1),
-            Std.int(y - sprite.stringHeight(s, &quot;alphabet2&quot;) / 2 + 1),
+            Std.int(x - sprite.stringWidth(s, "alphabet2", spacing) / 2 + 1),
+            Std.int(y - sprite.stringHeight(s, "alphabet2") / 2 + 1),
             s,
-            &quot;alphabet2&quot;, spacing
+            "alphabet2", spacing
         );
         sprite.string(
             g, 
-            Std.int(x - sprite.stringWidth(s, &quot;alphabet1&quot;, spacing) / 2),
-            Std.int(y - sprite.stringHeight(s, &quot;alphabet1&quot;) / 2),
+            Std.int(x - sprite.stringWidth(s, "alphabet1", spacing) / 2),
+            Std.int(y - sprite.stringHeight(s, "alphabet1") / 2),
             s,
-            &quot;alphabet1&quot;, spacing
+            "alphabet1", spacing
         );
     }
     
@@ -4433,73 +3809,46 @@ class Empty {
     }
     
 }
-</programlisting>
-  </section>
-</section>
-<section id="last-thoughts">
-  <title>Last Thoughts</title>
-  <para>
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="last-thoughts"></a>Last Thoughts</h3></div></div></div><p>
     This guide presents a working game, but that doesn't mean it's
-    &quot;finished&quot;.
-  </para>
-  <para>
-    The game has no title screen, it simply says &quot;GAME OVER&quot;
+    "finished".
+  </p><p>
+    The game has no title screen, it simply says "GAME OVER"
     when the gameplay hasn't started. This is authentic to the original,
     but not up to modern standards - it could present GAME OVER
     temporarily, then go to a high scores screen, show instructions,
     present an attract-mode demo, etc.
-  </para>
-  <para>
+  </p><p>
     Multiplayer is part of the original Canyon Bomber game, but it's not
     included here. Fixing this will require some changes to the UI,
     graphics, and sound routines.
-  </para>
-  <para>
+  </p><p>
     The game is unforgivingly strict in a way that is typical of 1970's
     arcade games; a modern version might consider alternatives to
-    &quot;lives&quot;, end the level before clearing every last rock, or
+    "lives", end the level before clearing every last rock, or
     change some aspects of the bomb drop and how it's lined up.
-  </para>
-  <para>
+  </p><p>
     The gameplay works on the small scale, but doesn't expand or unfold.
     It could use a longer-term focus like upgrading your plane,
     pre-designed puzzles with ingenious solutions, a second phase which
     uses the cleared canyon in a different way, different scenarios for
     bombing, etc.
-  </para>
-  <para>
+  </p><p>
     And, of course, the graphics and sound could always be done with
     more detail.
-  </para>
-</section>
-<section id="i-got-an-error-but-who-should-i-ask-about-it">
-  <title>I got an error, but who should I ask about it?</title>
-  <itemizedlist>
-    <listitem>
-      <para>
-        If you encounter <emphasis>language or code generation
-        errors</emphasis>, it is probably a Haxe issue.
-      </para>
-    </listitem>
-    <listitem>
-      <para>
-        If you encounter <emphasis>API, asset import, or build
-        problems</emphasis>, it is probably a Kha issue.
-      </para>
-      <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="i-got-an-error-but-who-should-i-ask-about-it"></a>I got an error, but who should I ask about it?</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+        If you encounter <span class="emphasis"><em>language or code generation
+        errors</em></span>, it is probably a Haxe issue.
+      </p></li><li class="listitem"><p>
+        If you encounter <span class="emphasis"><em>API, asset import, or build
+        problems</em></span>, it is probably a Kha issue.
+      </p><p>
         TODO(how to contact people)
-      </para>
-    </listitem>
-  </itemizedlist>
-</section>
-<section id="debugging-performance-issues">
-  <title>Debugging Performance Issues</title>
-  <para>
+      </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="debugging-performance-issues"></a>Debugging Performance Issues</h3></div></div></div><p>
     If you are testing in the browser, make sure it's a clean
     environment. In Firefox 42.0, for example, old open tabs will share
     garbage collection pauses with your game.
-  </para>
-  <para>
+  </p><p>
     Make sure you are using appropriate timing mechanisms. Most
     simulation code runs best as a Scheduler TimeTask. You can divide up
     the simulation into multiple tasks running on different intervals if
@@ -4507,147 +3856,89 @@ class Empty {
     correct order given the intervals and priorities you set. If the
     hotspot code is related to rendering, then it should probably be a
     FrameTask.
-  </para>
-</section>
-<section id="build-and-asset-problems">
-  <title>Build and Asset Problems</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="build-and-asset-problems"></a>Build and Asset Problems</h3></div></div></div><p>
     Make sure there aren't file locking issues. Disable any automatic
     sync programs, reopen the project if it's been regerated, close and
     reopen editors and command consoles, reboot if you're feeling
     particularly paranoid.
-  </para>
-  <para>
+  </p><p>
     Make sure you've tried to load your assets before using them - if
     you aren't using loadEverything(), make sure you've loaded the
-    <emphasis>right</emphasis> assets.
-  </para>
-  <para>
+    <span class="emphasis"><em>right</em></span> assets.
+  </p><p>
     Make sure you're applying the correct type. For example, if you used
     --addallassets to add music, you would still have to change the type
     from sound to music, since it would default to sound.
-  </para>
-</section>
-<section id="html5-builds">
-  <title>HTML5 Builds</title>
-  <para>
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="html5-builds"></a>HTML5 Builds</h3></div></div></div><p>
     When targeting the Web, security and networking considerations come
     into play as part of loading your game. In many cases you can point
     your browser at the generated index.html to run the game.
-  </para>
-  <para>
+  </p><p>
     You can also force your Khabuild process to run a server with the
     --server parameter. It defaults to
-    <ulink url="http://localhost:8080">http://localhost:8080</ulink>.
-  </para>
-</section>
-<section id="contributors-guide">
-  <title>Contributor's guide</title>
-  <para>
+    <a class="ulink" href="http://localhost:8080" target="_top">http://localhost:8080</a>.
+  </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="contributors-guide"></a>Contributor's guide</h3></div></div></div><p>
     The goal of this guide is provide a narrative of game development,
     as a way of familiarizing readers with Kha and also with broader
     processes involved in game development.
-  </para>
-  <para>
+  </p><p>
     To do this, the guide provides complete code examples, allowing the
-    reader to bring them into a &quot;real&quot; environment as soon as
+    reader to bring them into a "real" environment as soon as
     possible by copy-pasting example code. The API is introduced
     gradually and naturally, in the way it would appear in a real
     project.
-  </para>
-  <para>
+  </p><p>
     The guide opts, where reasonable, to be brave. It presents genuine
     challenges that put the framework to the test, rather than small
     synthetic examples.
-  </para>
-  <para>
+  </p><p>
     The guide's format is
-    <ulink url="https://help.github.com/articles/github-flavored-markdown/">Github-flavored
-    Markdown</ulink>. (Should the needs of the guide change, format
+    <a class="ulink" href="https://help.github.com/articles/github-flavored-markdown/" target="_top">Github-flavored
+    Markdown</a>. (Should the needs of the guide change, format
     conversion may be considered in the future.)
-  </para>
-  <para>
+  </p><p>
     External editors are recommended to ease the pain of syntax and
     organization. @Triplefox uses a mix of
-    <ulink url="http://twinery.org/">Twine 2</ulink> (hypertext design)
-    and <ulink url="http://www.mdcharm.com/">MdCharm</ulink> (body text
+    <a class="ulink" href="http://twinery.org/" target="_top">Twine 2</a> (hypertext design)
+    and <a class="ulink" href="http://www.mdcharm.com/" target="_top">MdCharm</a> (body text
     formatting).
-  </para>
-  <section id="common-technical-writing-practices">
-    <title>Common Technical Writing Practices</title>
-    <itemizedlist spacing="compact">
-      <listitem>
-        <para>
-          Lead with the &quot;what&quot; and &quot;why&quot; of each
+  </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="common-technical-writing-practices"></a>Common Technical Writing Practices</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist compact" style="list-style-type: disc; "><li class="listitem"><p>
+          Lead with the "what" and "why" of each
           item: What is this, and why do I need it?
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Follow up with the &quot;when&quot; and &quot;where&quot;: in
+        </p></li><li class="listitem"><p>
+          Follow up with the "when" and "where": in
           which situation is it needed?
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Do not use &quot;should&quot;, &quot;may&quot;,
-          &quot;can&quot;, or &quot;when&quot; to describe a task.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Prefer &quot;shall&quot;, &quot;must&quot;, &quot;will&quot;
-          or &quot;shall not&quot;, &quot;must not&quot;, &quot;will
-          not&quot;.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
+          Do not use "should", "may",
+          "can", or "when" to describe a task.
+        </p></li><li class="listitem"><p>
+          Prefer "shall", "must", "will"
+          or "shall not", "must not", "will
+          not".
+        </p></li><li class="listitem"><p>
           Break tasks into 7 steps, plus or minus two.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
+        </p></li><li class="listitem"><p>
           If more steps are required, use subheadings and group the
           steps into logical categories.
-        </para>
-      </listitem>
-    </itemizedlist>
-  </section>
-  <section id="terms">
-    <title>Terms</title>
-    <para>
-      &quot;haxelib&quot; vs &quot;standalone&quot; builds of Kha
+        </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="terms"></a>Terms</h4></div></div></div><p>
+      "haxelib" vs "standalone" builds of Kha
       projects. The former use the version of Kha currently updated on
       Haxelib. The latter use Kha as a Git submodule.
-    </para>
-  </section>
-  <section id="style">
-    <title>Style</title>
-    <para>
+    </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="style"></a>Style</h4></div></div></div><p>
       Quotes and asides are written using blockquote syntax:
-    </para>
-    <para>
+    </p><p>
       According to Plato,
-    </para>
-    <blockquote>
-      <para>
-        <emphasis>The beginning is the most important part of the
-        work.</emphasis>
-      </para>
-    </blockquote>
-    <para>
+    </p><div class="blockquote"><blockquote class="blockquote"><p>
+        <span class="emphasis"><em>The beginning is the most important part of the
+        work.</em></span>
+      </p></blockquote></div><p>
       Source should be kept inline with the document where possible,
       using the appropriate syntax highlighting hint:
-    </para>
-    <programlisting language="haxe">
+    </p><pre class="programlisting">
 
 class HelloWorld {
     public function new() {
-        trace(&quot;hello world&quot;);
+        trace("hello world");
     }
 }
-</programlisting>
-  </section>
-</section>
-</section>
+</pre></div></div></div></body></html>
