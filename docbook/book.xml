@@ -2107,8 +2107,8 @@ class Empty {
 </para>
 <para>
   First of all, we need to include a font asset in the project. Kha
-  fonts are standard TTF files. They are converted to static font assets
-  - i.e. you specify what sizes and stylings you will use at build time.
+  fonts are standard TTF files. The framework does all the behind-the-scenes
+  work of rendering the text, and provides basic size and positioning information.
 </para>
 <para>
   Recall that khamake uses node.js. This extends into how we script
@@ -2137,7 +2137,7 @@ project.addAssets('Assets/**'); // add an asset path.
     <listitem>
       <para>
         Make an &quot;Assets&quot; directory, and drop
-        <ulink url="LINKME">arial.ttf</ulink> into Assets.
+        <ulink url="https://github.com/triplefox/khaguide/blob/master/Empty/Assets/arial.ttf">arial.ttf</ulink> into Assets.
       </para>
     </listitem>
     <listitem>
@@ -2846,7 +2846,7 @@ class Empty {
   First of all, we need to have some assets to work with.
 </para>
 <para>
-  <ulink url="LINKME">Mockup</ulink>
+  <ulink url="https://github.com/triplefox/khaguide/blob/master/Empty/Assets/sprites.png">sprites.png</ulink>
 </para>
 <para>
   I drew up a mockup with some simple sprites and tiles, based on the
@@ -2855,7 +2855,7 @@ class Empty {
 <para>
   Now, we have a few options for turning this mockup into usable assets.
   Kha will take care of converting and packaging the image when we
-  rebuild the project. But we still need to assign &quot;meanings&quot;
+  run khamake. But we still need to assign &quot;meanings&quot;
   to the assets that make them equivalent to the rectangles we've been
   using up until now.
 </para>
@@ -2889,7 +2889,7 @@ class Empty {
 <para>
   The output of Pixelbound is a JSON file containing some coordinates:
 </para>
-<ulink url="LINKME">spritedata.json</ulink>
+<ulink url="https://github.com/triplefox/khaguide/blob/master/Empty/Assets/spritedata.json">spritedata.json</ulink>
   <itemizedlist spacing="compact">
     <listitem>
       <para>
@@ -3821,7 +3821,8 @@ class Empty {
   considerably to accommodate variations of similar sounds like the
   dropping and breaking noises. As tends to happen, the filenames also
   drifted away from my original scheme, so I updated the project to
-  match.
+  match. The final files(along with the other assets) are 
+  <ulink url="https://github.com/triplefox/khaguide/tree/master/Empty/Assets">here</ulink>.
 </para>
 <para>
   Integrating audio into the project can be time-consuming, just like
@@ -4507,7 +4508,11 @@ class Empty {
         problems</emphasis>, it is probably a Kha issue.
       </para>
       <para>
-        TODO(how to contact people)
+        At this time, the fastest way to get responses to Kha questions is through
+        the IRC channel: 
+        <blockquote>irc.ktxsoftware.com #kha</blockquote>
+        There is also a channel log with old questions at 
+        <ulink url="http://khaflixel.ratalaikagames.com/irc/">http://khaflixel.ratalaikagames.com/irc/</ulink>
       </para>
     </listitem>
   </itemizedlist>
@@ -4541,11 +4546,6 @@ class Empty {
     Make sure you've tried to load your assets before using them - if
     you aren't using loadEverything(), make sure you've loaded the
     <emphasis>right</emphasis> assets.
-  </para>
-  <para>
-    Make sure you're applying the correct type. For example, if you used
-    --addallassets to add music, you would still have to change the type
-    from sound to music, since it would default to sound.
   </para>
 </sect1>
 <sect1 id="html5-builds">
