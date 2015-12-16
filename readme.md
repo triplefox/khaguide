@@ -4,6 +4,8 @@ This guide is intended to give you a "real-world" introduction to problems and t
 
 Its intended audience is existing programmers who don't necessarily know game programming or the Haxe language, and experienced game programmers who would like to see a whole project workflow in action.
 
+[View the Guide Online](http://htmlpreview.github.io/?https://raw.githubusercontent.com/triplefox/khaguide/master/build/book.html)
+
 # Project Structure
 
 * /html contains the documentation as a single html file.
