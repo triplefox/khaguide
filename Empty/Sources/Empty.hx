@@ -97,7 +97,7 @@ class Empty {
 		sound_bomb = [for (i in 0...4) ('bomb${i+1}')];
 		sound_explode = [for (i in 0...12) ('explode${i+1}')];
 		sprite = new KhaBoundsData(
-			Assets.blobs.spritedata.toString(),
+			Assets.blobs.spritedata_json.toString(),
 			[Assets.images.sprites],
 			[
 			{

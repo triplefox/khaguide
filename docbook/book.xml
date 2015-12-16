@@ -374,7 +374,7 @@ For more commands:
     copy your project files in on top.
   </para>
   <para>
-    If you have an existing git repository, you can add Kha as a
+    If you have an existing git repository without Kha, add Kha as a
     submodule like this:
   </para>
   <programlisting>
@@ -964,7 +964,7 @@ Scheduler.addTimeTask(game.simulate, 0, 1 / 60);
   <sect2 id="realtime-and-time">
     <title>realTime() and time()</title>
     <para>
-      To get the current time since start, you can use:
+      To get the current time since start, use:
     </para>
     <programlisting>
 Scheduler.time();
@@ -3116,6 +3116,10 @@ class KhaBoundsData {
       resolution.
     </para>
   </blockquote>
+  <para>
+    To access spritedata.json we use the Blob API. khamake appends the file 
+    extension to these assets as an underscore, so the field name is "spritedata_json".
+  </para>
 </sect1>
 <sect1 id="smoothing-the-walls">
   <title>Smoothing the Walls</title>
@@ -3342,7 +3346,7 @@ class Empty {
             sprite_image:0, sprite_name:null}
         ];
         sprite = new KhaBoundsData(
-            Assets.blobs.spritedata.toString(),
+            Assets.blobs.spritedata_json.toString(),
             [Assets.images.sprites],
             [
             {
@@ -3851,7 +3855,7 @@ class Empty {
 Audio.play(sound : Sound, loop : Bool, stream : Bool) : AudioChannel;
 </programlisting>
   <para>
-    Usually you can call Audio.play(Assets.sound.mysound) for a basic
+    Usually call Audio.play(Assets.sound.mysound) for a basic
     one-shot sound.
   </para>
   <itemizedlist spacing="compact">
@@ -3983,7 +3987,7 @@ class Empty {
         sound_bomb = [for (i in 0...4) ('bomb${i+1}')];
         sound_explode = [for (i in 0...12) ('explode${i+1}')];
         sprite = new KhaBoundsData(
-            Assets.blobs.spritedata.toString(),
+            Assets.blobs.spritedata_json.toString(),
             [Assets.images.sprites],
             [
             {
@@ -4552,8 +4556,8 @@ class Empty {
   <title>HTML5 Builds</title>
   <para>
     When targeting the Web, security and networking considerations come
-    into play as part of loading your game. In many cases you can point
-    your browser at the generated index.html to run the game.
+    into play as part of loading your game. In many cases pointing
+    your browser at the generated index.html will run the game.
   </para>
   <para>
     You can also force your Khabuild process to run a server with the
