@@ -20,9 +20,12 @@ Its intended audience is existing programmers who don't necessarily know game pr
 2. Install the DocBook XSL stylesheets
 3. Run this command from the project root:
     
-        xsltproc -o build/book.html <docbookpath>/html/docbook.xsl docbook/book.xml 
+        xsltproc -o build/book.html build/style.xsl docbook/book.xml 
         
-Or if you don't want to install DocBook:
+Please note that style.xsl hardlinks to the local installation of the DocBook XSL for HTML. Change the href line to match your own install.
 
-        xsltproc -o build/book.html http://docbook.sourceforge.net/release/xsl/current/html/docbook.xsl docbook/book.xml
+Alternatively, you can change the href to point to:
 
+        http://docbook.sourceforge.net/release/xsl/current/html/docbook.xsl
+
+This will download DocBook each time you run the command, but you won't have to maintain a local installation.

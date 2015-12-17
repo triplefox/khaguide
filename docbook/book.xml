@@ -4458,7 +4458,14 @@ class Empty {
 <sect1>
   <para>
     This guide presents a working game, but that doesn't mean it's
-    &quot;finished&quot;.
+    &quot;finished&quot;. There are bugs, features, and design changes to think about.
+  </para>
+  <para>
+    There is a minor but slightly annoying bug: If you hold the button down after the
+    plane flies offscreen, it will repeatedly drop useless bombs until all lives are lost.
+  </para>
+  <para>
+    Sometimes, the bomb hits a single rock, but two different rock breaking sounds play.
   </para>
   <para>
     The game has no title screen, it simply says &quot;GAME OVER&quot;
