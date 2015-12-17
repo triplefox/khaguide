@@ -325,15 +325,12 @@ class Empty {
 		plane.y = (Math.random() * (PLANE_MAXY - PLANE_MINY)) 
 			+ PLANE_MINY;
 		plane.vx *= Math.min(0.5 + (plane.passes+1) * 0.15, 1.5);
-		if (channel_engine_blimp != null) channel_engine_blimp.stop();
-		if (channel_engine_plane != null) channel_engine_plane.stop();
-		if (isBlimp(plane)) {
+		if (channel_engine_blimp == null) 
 			channel_engine_blimp = Audio.play(Assets.sounds.engine_blimp, true);
-			channel_engine_blimp.volume = 0.0;
-		} else {
+		if (channel_engine_plane == null)
 			channel_engine_plane = Audio.play(Assets.sounds.engine_plane, true);			
-			channel_engine_plane.volume = 0.0;
-		}
+		channel_engine_blimp.volume = 0.0;
+		channel_engine_plane.volume = 0.0;
 	}
 	
 	public function update(): Void {
