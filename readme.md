@@ -12,17 +12,18 @@ Its intended audience is existing programmers who don't necessarily know game pr
 * /docbook contains the DocBook source.
 * /Empty contains the final source code and assets of the example game project.
 * /markdown contains old draft versions of the documentation.
-
+* /proc contains the post-processing script for node.js.
 
 # Building the Docs
 
 1. Install a copy of xsltproc.
-2. Install the DocBook XSL stylesheets
-3. Run this command from the project root:
-    
-        xsltproc -o build/book.html build/style.xsl docbook/book.xml 
+2. Install the DocBook XSL stylesheets.
+3. Install node.js.
+4. Run b.bat. (In Windows. It may also work in sh.)
         
-Please note that style.xsl hardlinks to the local installation of the DocBook XSL for HTML. Change the href line to match your own install.
+There is one hardlink that you will have to change: 
+
+1. style.xsl hardlinks to the local installation of the DocBook XSL for HTML. Change the href line to match your own install.
 
 Alternatively, you can change the href to point to:
 
