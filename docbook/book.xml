@@ -80,8 +80,11 @@
     Lastly, by working in Haxe you will learn techniques for writing
     reliable, highly portable code - not just in Haxe, but in all the
     environments Haxe targets. The Haxe ecosystem is designed around
-    making sure all targets have a viable solution. You gain the
-    possibility of using the debugging tools of more than one target,
+    making sure all targets have <emphasis>viable solutions</emphasis>. 
+    This means that for any given problem you encounter, there is some way
+    to access the native functionality of the target to resolve that problem,
+    while still working with Haxe abstractions for the majority of the code.
+    You gain the possibility of using the debugging tools of more than one target,
     which improves your chances of quickly resolving a difficult bug.
   </para>
   <para>
@@ -123,6 +126,32 @@
     memory. Simpler scenes and simulations will make garbage collections
     both smaller and less frequent, limiting any potential impact on
     framerates.
+  </para>
+  <para>
+    Now you may still be wondering, "how do I know how demanding my project will be?"
+    and the answer is, for pretty much any game or media project on the planet: 
+    <emphasis>as much or as little as you want.</emphasis>
+    The data sets are fixed. You can always find a way to dial down
+    the level of detail presented. So the most legitimate answer is that you only want 
+    a lower level solution if you are explicitly aiming to push the boundaries of
+    the machine and make it process as much as possible - for anything less than that, 
+    modern devices allow you to make tradeoffs, and nobody can tell you
+    what that translates to in useful high-level terms like "scene complexity" or 
+    "quality of AI". Benchmarks are mostly informative to system bottlenecks, 
+    and those bottlenecks may not be relevant to your design after all features are added.
+    To quote a friend of mine, working on a little C++ project a few years ago:
+  </para>
+  <blockquote>
+    <para><emphasis>
+        I am leaking megabytes every second and not even noticing.
+    </emphasis></para>
+  </blockquote>
+  <para>
+    So to make useful benchmarks for yourself, always design towards some maximums, 
+    and make sure the framework can handle those maximums with some headroom to spare.
+    Design limits build creative spaces - don't think of them as
+    settling for less. If you can achieve an effect with less, that's usually better.
+    That goes for limits that aren't based in technical constraints, too!
   </para>
 </sect1>
 <sect1 id="why-is-kha-special">
@@ -180,7 +209,12 @@ Kha aims for a new standard of crossplatform games technology, with a graphics a
       much more fleshed out and tested as a game engine. The difference
       is in whether you are aiming to implement &quot;engine bits&quot;
       like collision detection and physics, or if you can use an
-      off-the-shelf solution effectively.
+      off-the-shelf solution effectively. Unity provides the latter, more complete
+      solution, and, assuming you're already familiar with it,
+      is better for rapid prototyping of typical scenes. Kha is better at
+      being the underpinning of a game engine. Game engines such as Khapunk have
+      already been ported to work on Kha. UI toolkits like HaxeUI also support Kha
+      as a display layer target.
     </para>
     <para>
       If you want to mix Kha and Unity, or Haxe and Unity, that is also
@@ -226,7 +260,7 @@ Kha aims for a new standard of crossplatform games technology, with a graphics a
       </listitem>
     </orderedlist>
     <para>
-      Robert says:
+      Robert, Kha's maintainer, says:
     </para>
     <blockquote>
       <para>
@@ -3096,7 +3130,7 @@ class KhaBoundsData {
     This is the simplest kind of sprite drawing: take some coordinates
     and throw an image up on the screen. It's only different from the
     rectangle drawing in that we're going to conform to the size of the
-    sprite(and we don't even have to do that, necessarily, if we scale
+    sprite (and we don't even have to do that, necessarily, if we scale
     the sprite).
   </para>
   <para>
