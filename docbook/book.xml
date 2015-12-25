@@ -863,6 +863,13 @@ class Empty {
       </listitem>
     </orderedlist>
   </sect2>
+  <sect2 id="build details">
+    <title>Build Details</title>
+    <para>
+      The generated FlashDevelop project or hxml file contains the flag "kha"
+      which can be used in an #if block to detect whether the project was built with Kha.
+    </para>
+  </sect2>
 </sect1>
 </chapter>
 
