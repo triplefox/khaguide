@@ -56,6 +56,15 @@
         Then work with the toolchain of the target platform to debug it.
       </para>
     </sect2>
+    <sect2 id="khas-name">
+        <title>Where does Kha come from?</title>
+        <para>
+        Kha is one of a series of portability frameworks Robert Konrad
+        wrote.
+        It is directly based on "Kje", a Java framework, and has
+        been developed since 2012. The "ha" stands for Haxe, of course.
+        </para>
+    </sect2>
 </sect1>
 <sect1 id="what-is-the-benefit">
   <title>What is the benefit?</title>
