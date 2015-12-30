@@ -335,8 +335,9 @@ git clone --recursive https://github.com/KTXSoftware/Empty.git
 </programlisting>
       <para>
         This will download lots of stuff, since it's including all of
-        Kha. When it's done, cd into &quot;Empty&quot;.
+        Kha. When it's done, the project root is in Empty:
       </para>
+      <programlisting>cd Empty</programlisting>
       <para>
         <emphasis role="strong">To run khamake type:</emphasis>
       </para>
