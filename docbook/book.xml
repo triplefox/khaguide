@@ -346,7 +346,8 @@ node Kha/make
 </programlisting>
       <para>
         The remainder of this guide will alias this line as
-        &quot;khamake&quot;. You can add targets and options to it.
+        &quot;khamake&quot;. You can add targets and options to it. 
+        You may need to update the submodules(see Updating Kha) before continuing.
       </para>
       <para>
         Alternate method, using a script that runs khamake:
