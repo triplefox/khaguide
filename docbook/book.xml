@@ -449,6 +449,30 @@ git commit -m &quot;update Kha&quot;
     manually.
   </para>
 </sect1>
+<sect1 id="kodestudio">
+  <title>Kode Studio</title>
+  <para>
+    Kode Studio is a customized, cross-platform IDE for working with Kha projects.
+    It's based on VS Code. Working with Kode 
+    is recommended as it is integrated with a special Kha runtime 
+    based on the Electron JS platform, simplifying development workflow.
+  </para>
+  <orderedlist>
+    <listitem>
+      <para>
+        To use Kode Studio with your Kha project, launch code. 
+        From the File dropdown, select Open Folder, then select the root
+        path of your Kha project. No additional project file is needed!
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        F5 is your &quot;test build&quot; button. It will run a complete
+        build, including assets, and launch the project in Electron.
+      </para>
+    </listitem>
+  </orderedlist>
+</sect1>
 <sect1 id="flashdevelop">
   <title>FlashDevelop</title>
   <para>
@@ -477,7 +501,7 @@ git commit -m &quot;update Kha&quot;
 <sect1 id="intellij">
   <title>IntelliJ</title>
   <para>
-    IntelliJ contains a well-maintained Haxe plugin, available from its
+    IntelliJ contains a Haxe plugin, available from its
     internal plugin browser, and Kha generates project files for it.
     Make sure the plugin is installed. Then visit the /build directory
     and open the project file for your build target.
