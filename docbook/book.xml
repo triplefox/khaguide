@@ -2202,7 +2202,8 @@ project.addSources('Sources'); // add a source code path.
 project.addAssets('Assets/**'); // add an asset path.
 </programlisting>
   <para>
-    Empty project doesn't have &quot;Assets&quot; by default.
+    Empty project doesn't have &quot;Assets&quot; by default. The path expression takes either 
+    &quot;*&quot; (add all files in directory) or &quot;**&quot;. (add all files in directory and subdirectories)
   </para>
   <orderedlist spacing="compact">
     <listitem>
