@@ -6,7 +6,12 @@ import kha.System;
 class Main {
 	
 	public static function main() {
-		System.init("Empty", 320, 240, initialized);
+		System.init({
+            title : "Empty", 
+            width : 320, 
+            height : 240
+        },
+        initialized);
 	}
 	
 	private static function initialized(): Void {

@@ -217,8 +217,8 @@ class Empty {
 			Color.Red, Color.Cyan];
 		var col_explosion = Color.White;
 		var transform = FastMatrix3.scale(
-			System.pixelWidth / WIDTH, 
-			System.pixelHeight / HEIGHT);
+			System.windowWidth(0) / WIDTH, 
+			System.windowHeight(0) / HEIGHT);
 		{ // graphics2 calls
 			var g = framebuffer.g2;
 			g.begin();
