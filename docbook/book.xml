@@ -680,7 +680,7 @@ import kha.System;
 
 class Main {
     public static function main() {
-        System.init(&quot;Empty&quot;, 640, 480, initialized);
+        System.init({title:&quot;Empty&quot;, width:640, height:480}, initialized);
     }
     
     private static function initialized(): Void {
@@ -1115,8 +1115,11 @@ Scheduler.realTime();
   <title>Scaling</title>
   <para>
     Oh, how inconvenient! We aren't always going to get the resolution
-    we request returned in System.pixelWidth and System.pixelHeight.
-    After all, the system can't always give you what you ask for.
+    we request returned in System.windowWidth and System.windowHeight.
+    After all, the system can't always give you what you ask for. When we
+    get those values, what's returned is the current size of window 0.
+    We might have more than one window, or the user might change the window
+    size, e.g. because their phone went from portrait to landscape.
   </para>
   <para>
     That also means that if we want to force a certain pixel resolution
@@ -1222,8 +1225,8 @@ class Empty {
             col_bg = Color.Red;
         var col_plane = Color.White;
         var transform = FastMatrix3.scale(
-            System.pixelWidth / WIDTH, 
-            System.pixelHeight / HEIGHT);
+            System.windowWidth(0) / WIDTH, 
+            System.windowHeight(0) / HEIGHT);
         { // graphics2 calls
             var g = framebuffer.g2;
             g.begin();
@@ -1330,8 +1333,8 @@ class Empty {
         var col_plane = Color.White;
         var col_bomb = Color.Red;
         var transform = FastMatrix3.scale(
-            System.pixelWidth / WIDTH, 
-            System.pixelHeight / HEIGHT);
+            System.windowWidth(0) / WIDTH, 
+            System.windowHeight(0) / HEIGHT);
         { // graphics2 calls
             var g = framebuffer.g2;
             g.begin();
@@ -1615,8 +1618,8 @@ class Empty {
         var col_wall = Color.Blue;
         var col_rock = Color.Orange;
         var transform = FastMatrix3.scale(
-            System.pixelWidth / WIDTH, 
-            System.pixelHeight / HEIGHT);
+            System.windowWidth(0) / WIDTH, 
+            System.windowHeight(0) / HEIGHT);
         { // graphics2 calls
             var g = framebuffer.g2;
             g.begin();
@@ -1833,8 +1836,8 @@ class Empty {
         var col_wall = Color.Blue;
         var col_rock = Color.Orange;
         var transform = FastMatrix3.scale(
-            System.pixelWidth / WIDTH, 
-            System.pixelHeight / HEIGHT);
+            System.windowWidth(0) / WIDTH, 
+            System.windowHeight(0) / HEIGHT);
         { // graphics2 calls
             var g = framebuffer.g2;
             g.begin();
@@ -2056,8 +2059,8 @@ class Empty {
         var col_wall = Color.Blue;
         var col_rock = Color.Orange;
         var transform = FastMatrix3.scale(
-            System.pixelWidth / WIDTH, 
-            System.pixelHeight / HEIGHT);
+            System.windowWidth(0) / WIDTH, 
+            System.windowHeight(0) / HEIGHT);
         { // graphics2 calls
             var g = framebuffer.g2;
             g.begin();
@@ -2392,8 +2395,8 @@ class Empty {
         var col_wall = Color.Blue;
         var col_rock = Color.Orange;
         var transform = FastMatrix3.scale(
-            System.pixelWidth / WIDTH, 
-            System.pixelHeight / HEIGHT);
+            System.windowWidth(0) / WIDTH, 
+            System.windowHeight(0) / HEIGHT);
         { // graphics2 calls
             var g = framebuffer.g2;
             g.begin();
@@ -2712,8 +2715,8 @@ class Empty {
         var col_rock = [Color.Orange, Color.Pink, Color.Purple, 
             Color.Red, Color.Cyan];
         var transform = FastMatrix3.scale(
-            System.pixelWidth / WIDTH, 
-            System.pixelHeight / HEIGHT);
+            System.windowWidth(0) / WIDTH, 
+            System.windowHeight(0) / HEIGHT);
         { // graphics2 calls
             var g = framebuffer.g2;
             g.begin();
@@ -3543,8 +3546,8 @@ class Empty {
             Color.Red, Color.Cyan];
         var col_explosion = Color.White;
         var transform = FastMatrix3.scale(
-            System.pixelWidth / WIDTH, 
-            System.pixelHeight / HEIGHT);
+            System.windowWidth(0) / WIDTH, 
+            System.windowHeight(0) / HEIGHT);
         { // graphics2 calls
             var g = framebuffer.g2;
             g.begin();
@@ -4184,8 +4187,8 @@ class Empty {
             Color.Red, Color.Cyan];
         var col_explosion = Color.White;
         var transform = FastMatrix3.scale(
-            System.pixelWidth / WIDTH, 
-            System.pixelHeight / HEIGHT);
+            System.windowWidth(0) / WIDTH, 
+            System.windowHeight(0) / HEIGHT);
         { // graphics2 calls
             var g = framebuffer.g2;
             g.begin();
